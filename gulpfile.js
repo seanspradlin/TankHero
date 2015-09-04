@@ -1,15 +1,15 @@
 'use strict';
 
-var gulp        = require('gulp')
-  , sourcemaps  = require('gulp-sourcemaps')
-  , concat      = require('gulp-concat')
-  , uglify      = require('gulp-uglify')
-  , minifyHtml  = require('gulp-minify-html')
-  , Config      = require('./gulpfile.config')
-  , config      = new Config();
+var gulp = require('gulp')
+  , sourcemaps = require('gulp-sourcemaps')
+  , concat = require('gulp-concat')
+  , uglify = require('gulp-uglify')
+  , minifyHtml = require('gulp-minify-html')
+  , Config = require('./gulpfile.config')
+  , config = new Config();
 
 // Concat + Minify JS
-gulp.task('js-crunch', function() {
+gulp.task('js-crunch', function () {
   return gulp.src(config.scripts)
     .pipe(sourcemaps.init())
     .pipe(concat('tankhero.min.js'))
@@ -19,16 +19,22 @@ gulp.task('js-crunch', function() {
 });
 
 // Minify HTML
-gulp.task('html-crunch', function() {
+gulp.task('html-crunch', function () {
   return gulp.src(config.source + 'index.html')
     .pipe(minifyHtml())
-    .pipe(gulp.dest(config.build)); 
+    .pipe(gulp.dest(config.build));
 });
 
 // Migrate phaser files
-gulp.task('phaser', function() {
+gulp.task('phaser', function () {
   return gulp.src(config.source + 'vendor/phaser/build/phaser.*')
-    .pipe(gulp.dest(config.build + 'scripts/')); 
+    .pipe(gulp.dest(config.build + 'scripts/'));
 });
 
-gulp.task('default', ['js-crunch', 'html-crunch', 'phaser']);
+// Assets
+gulp.task('assets', function () {
+  return gulp.src(config.source + 'assets/**/*.*')
+    .pipe(gulp.dest(config.build + '/assets/'));
+});
+
+gulp.task('default', ['js-crunch', 'html-crunch', 'phaser', 'assets']);
