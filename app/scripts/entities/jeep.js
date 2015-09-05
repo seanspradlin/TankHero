@@ -5,7 +5,6 @@ function Jeep(game, x, y) {
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'jeep/body1');
 
-
   // Animations
   this.animations.add(
     'driving',
