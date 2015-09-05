@@ -1,228 +1,324 @@
 {"frames": {
 
-"body.png":
+"bomber/body":
 {
-	"frame": {"x":2,"y":2,"w":238,"h":98},
+	"frame": {"x":126,"y":2,"w":238,"h":98},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":8,"y":0,"w":238,"h":98},
 	"sourceSize": {"w":253,"h":98}
 },
-"bomb.png":
+"bomber/bomb":
 {
-	"frame": {"x":632,"y":85,"w":46,"h":12},
+	"frame": {"x":2,"y":113,"w":46,"h":12},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":12},
 	"sourceSize": {"w":46,"h":12}
 },
-"jeep_arm1.png":
+"bomber/propeller1":
 {
-	"frame": {"x":645,"y":54,"w":4,"h":7},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":7},
-	"sourceSize": {"w":4,"h":7}
-},
-"jeep_body1.png":
-{
-	"frame": {"x":416,"y":2,"w":80,"h":23},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":23},
-	"sourceSize": {"w":80,"h":23}
-},
-"jeep_body2.png":
-{
-	"frame": {"x":498,"y":2,"w":76,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":76,"h":22},
-	"sourceSize": {"w":80,"h":23}
-},
-"jeep_body3.png":
-{
-	"frame": {"x":242,"y":29,"w":73,"h":23},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":23},
-	"sourceSize": {"w":80,"h":23}
-},
-"jeep_body4.png":
-{
-	"frame": {"x":301,"y":75,"w":70,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":70,"h":22},
-	"sourceSize": {"w":80,"h":23}
-},
-"jeep_body5.png":
-{
-	"frame": {"x":413,"y":74,"w":63,"h":23},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":23},
-	"sourceSize": {"w":80,"h":23}
-},
-"jeep_body6.png":
-{
-	"frame": {"x":478,"y":77,"w":54,"h":22},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":1,"w":54,"h":22},
-	"sourceSize": {"w":80,"h":23}
-},
-"jeep_driver.png":
-{
-	"frame": {"x":632,"y":54,"w":11,"h":12},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
-	"sourceSize": {"w":11,"h":12}
-},
-"jeep_grenade.png":
-{
-	"frame": {"x":670,"y":35,"w":9,"h":3},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":3},
-	"sourceSize": {"w":9,"h":3}
-},
-"jeep_grenadier.png":
-{
-	"frame": {"x":670,"y":2,"w":13,"h":22},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":22},
-	"sourceSize": {"w":13,"h":22}
-},
-"player_body1.png":
-{
-	"frame": {"x":242,"y":54,"w":57,"h":44},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":18,"y":6,"w":57,"h":44},
-	"sourceSize": {"w":75,"h":50}
-},
-"player_body2.png":
-{
-	"frame": {"x":317,"y":29,"w":58,"h":44},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":17,"y":6,"w":58,"h":44},
-	"sourceSize": {"w":75,"h":50}
-},
-"player_body3.png":
-{
-	"frame": {"x":568,"y":54,"w":62,"h":44},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":6,"w":62,"h":44},
-	"sourceSize": {"w":75,"h":50}
-},
-"player_body4.png":
-{
-	"frame": {"x":416,"y":27,"w":68,"h":45},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":7,"y":5,"w":68,"h":45},
-	"sourceSize": {"w":75,"h":50}
-},
-"player_body5.png":
-{
-	"frame": {"x":576,"y":2,"w":74,"h":50},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":50},
-	"sourceSize": {"w":75,"h":50}
-},
-"player_body6.png":
-{
-	"frame": {"x":498,"y":26,"w":68,"h":49},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":7,"y":1,"w":68,"h":49},
-	"sourceSize": {"w":75,"h":50}
-},
-"player_cannon1.png":
-{
-	"frame": {"x":534,"y":77,"w":25,"h":5},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":12,"w":25,"h":5},
-	"sourceSize": {"w":90,"h":25}
-},
-"player_cannon2.png":
-{
-	"frame": {"x":334,"y":2,"w":80,"h":25},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":25},
-	"sourceSize": {"w":90,"h":25}
-},
-"player_cannon3.png":
-{
-	"frame": {"x":242,"y":2,"w":90,"h":25},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":25},
-	"sourceSize": {"w":90,"h":25}
-},
-"player_cannon4.png":
-{
-	"frame": {"x":632,"y":69,"w":44,"h":14},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":9,"w":44,"h":14},
-	"sourceSize": {"w":90,"h":25}
-},
-"player_shell.png":
-{
-	"frame": {"x":670,"y":26,"w":8,"h":7},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":8,"h":7},
-	"sourceSize": {"w":10,"h":7}
-},
-"propeller1.png":
-{
-	"frame": {"x":395,"y":29,"w":16,"h":56},
+	"frame": {"x":621,"y":69,"w":16,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":10,"w":16,"h":56},
 	"sourceSize": {"w":16,"h":80}
 },
-"propeller2.png":
+"bomber/propeller2":
 {
-	"frame": {"x":652,"y":2,"w":16,"h":65},
+	"frame": {"x":592,"y":2,"w":16,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":65},
 	"sourceSize": {"w":16,"h":80}
 },
-"propeller3.png":
+"bomber/propeller3":
 {
-	"frame": {"x":395,"y":29,"w":16,"h":56},
+	"frame": {"x":621,"y":69,"w":16,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":10,"w":16,"h":56},
 	"sourceSize": {"w":16,"h":80}
 },
-"propeller4.png":
+"bomber/propeller4":
 {
-	"frame": {"x":377,"y":29,"w":16,"h":65},
+	"frame": {"x":610,"y":2,"w":16,"h":65},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":15,"w":16,"h":65},
 	"sourceSize": {"w":16,"h":80}
+},
+"explosion/1":
+{
+	"frame": {"x":435,"y":2,"w":72,"h":89},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":28,"y":36,"w":72,"h":89},
+	"sourceSize": {"w":125,"h":125}
+},
+"explosion/2":
+{
+	"frame": {"x":509,"y":2,"w":81,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":49,"w":81,"h":76},
+	"sourceSize": {"w":125,"h":125}
+},
+"explosion/3":
+{
+	"frame": {"x":366,"y":2,"w":67,"h":92},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":8,"w":67,"h":92},
+	"sourceSize": {"w":125,"h":125}
+},
+"explosion/4":
+{
+	"frame": {"x":2,"y":2,"w":122,"h":109},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":122,"h":109},
+	"sourceSize": {"w":125,"h":125}
+},
+"jeep/arm":
+{
+	"frame": {"x":73,"y":113,"w":4,"h":7},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":4,"h":7},
+	"sourceSize": {"w":4,"h":7}
+},
+"jeep/body1":
+{
+	"frame": {"x":144,"y":102,"w":80,"h":23},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":23},
+	"sourceSize": {"w":80,"h":23}
+},
+"jeep/body2":
+{
+	"frame": {"x":1020,"y":94,"w":76,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":76,"h":22},
+	"sourceSize": {"w":80,"h":23}
+},
+"jeep/body3":
+{
+	"frame": {"x":226,"y":102,"w":73,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":23},
+	"sourceSize": {"w":80,"h":23}
+},
+"jeep/body4":
+{
+	"frame": {"x":1098,"y":91,"w":70,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":70,"h":22},
+	"sourceSize": {"w":80,"h":23}
+},
+"jeep/body5":
+{
+	"frame": {"x":301,"y":102,"w":63,"h":23},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":63,"h":23},
+	"sourceSize": {"w":80,"h":23}
+},
+"jeep/body6":
+{
+	"frame": {"x":1132,"y":2,"w":54,"h":22},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":54,"h":22},
+	"sourceSize": {"w":80,"h":23}
+},
+"jeep/driver":
+{
+	"frame": {"x":50,"y":113,"w":11,"h":12},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":12},
+	"sourceSize": {"w":11,"h":12}
+},
+"jeep/grenade":
+{
+	"frame": {"x":63,"y":122,"w":9,"h":3},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":3},
+	"sourceSize": {"w":9,"h":3}
+},
+"jeep/grenadier":
+{
+	"frame": {"x":1170,"y":91,"w":13,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":22},
+	"sourceSize": {"w":13,"h":22}
+},
+"panther/body1":
+{
+	"frame": {"x":628,"y":2,"w":113,"h":53},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":53},
+	"sourceSize": {"w":113,"h":53}
+},
+"panther/body2":
+{
+	"frame": {"x":743,"y":2,"w":112,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":53},
+	"sourceSize": {"w":113,"h":53}
+},
+"panther/body3":
+{
+	"frame": {"x":639,"y":57,"w":113,"h":53},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":53},
+	"sourceSize": {"w":113,"h":53}
+},
+"panther/body4":
+{
+	"frame": {"x":754,"y":57,"w":112,"h":53},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":53},
+	"sourceSize": {"w":113,"h":53}
+},
+"panther/cannon1":
+{
+	"frame": {"x":79,"y":113,"w":63,"h":5},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":22,"w":63,"h":5},
+	"sourceSize": {"w":138,"h":44}
+},
+"panther/cannon2":
+{
+	"frame": {"x":933,"y":2,"w":138,"h":44},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":44},
+	"sourceSize": {"w":138,"h":44}
+},
+"panther/cannon3":
+{
+	"frame": {"x":1062,"y":48,"w":134,"h":41},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":1,"w":134,"h":41},
+	"sourceSize": {"w":138,"h":44}
+},
+"panther/cannon4":
+{
+	"frame": {"x":366,"y":96,"w":91,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":0,"w":91,"h":27},
+	"sourceSize": {"w":138,"h":44}
+},
+"player/body1":
+{
+	"frame": {"x":1073,"y":2,"w":57,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":6,"w":57,"h":44},
+	"sourceSize": {"w":75,"h":50}
+},
+"player/body2":
+{
+	"frame": {"x":1002,"y":48,"w":58,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":6,"w":58,"h":44},
+	"sourceSize": {"w":75,"h":50}
+},
+"player/body3":
+{
+	"frame": {"x":938,"y":48,"w":62,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":6,"w":62,"h":44},
+	"sourceSize": {"w":75,"h":50}
+},
+"player/body4":
+{
+	"frame": {"x":551,"y":80,"w":68,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":5,"w":68,"h":45},
+	"sourceSize": {"w":75,"h":50}
+},
+"player/body5":
+{
+	"frame": {"x":857,"y":2,"w":74,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":50},
+	"sourceSize": {"w":75,"h":50}
+},
+"player/body6":
+{
+	"frame": {"x":868,"y":54,"w":68,"h":49},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":1,"w":68,"h":49},
+	"sourceSize": {"w":75,"h":50}
+},
+"player/cannon1":
+{
+	"frame": {"x":79,"y":120,"w":25,"h":5},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":12,"w":25,"h":5},
+	"sourceSize": {"w":90,"h":25}
+},
+"player/cannon2":
+{
+	"frame": {"x":938,"y":94,"w":80,"h":25},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":25},
+	"sourceSize": {"w":90,"h":25}
+},
+"player/cannon3":
+{
+	"frame": {"x":459,"y":93,"w":90,"h":25},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":25},
+	"sourceSize": {"w":90,"h":25}
+},
+"player/cannon4":
+{
+	"frame": {"x":868,"y":105,"w":44,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":44,"h":14},
+	"sourceSize": {"w":90,"h":25}
+},
+"player/shell":
+{
+	"frame": {"x":63,"y":113,"w":8,"h":7},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":8,"h":7},
+	"sourceSize": {"w":10,"h":7}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "sprites.png",
 	"format": "RGBA8888",
-	"size": {"w":685,"h":102},
+	"size": {"w":1198,"h":127},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7b99bf665f7c80a404f16e9e9697a725:47a90aa8e857900294a747927037080c:1eabdf11f75e3a4fe3147baf7b5be24b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8f70c63ba6e867f99f6410db2d62c182:00eeca16e146203e10bdeebce2ddbffd:1eabdf11f75e3a4fe3147baf7b5be24b$"
 }
 }
