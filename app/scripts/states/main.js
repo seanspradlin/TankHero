@@ -4,7 +4,7 @@ var States = States || {}
 
 Main.create = function() {
   console.log('Game has begun');
-  this.add.sprite(100, 100, 'sprites', 'jeep/body1');
+  this.add.existing(new Jeep(Main.game, 150, 150));
 };
 
 States.Main = Main;
