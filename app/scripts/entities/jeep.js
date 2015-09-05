@@ -1,5 +1,8 @@
 'use strict';
 
+Jeep.prototype = Object.create(Phaser.Sprite.prototype);
+Jeep.prototype.constructor = Jeep;
+
 function Jeep(game, x, y) {
 
   // Call base constructor
@@ -29,6 +32,3 @@ function Jeep(game, x, y) {
   this.scale.x = 3;
   this.scale.y = 3;
 }
-
-Jeep.prototype = Object.create(Phaser.Sprite.prototype);
-Jeep.prototype.constructor = Jeep;
