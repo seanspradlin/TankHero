@@ -7,10 +7,11 @@ Boot.preload = function() {
 };
 
 Boot.create = function() {
+  this.stage.backgroundColor = '#aaaaaa';
   console.log('Configuring game');
-  
+
   console.log('Boot complete, jump to Preload.');
-  Boot.game.state.start('Preload');
+  this.state.start('Preload');
 };
 
 States.Boot = Boot;

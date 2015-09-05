@@ -9,7 +9,7 @@ Menu.create = function() {
 
 Menu.startGame = function() {
   console.log('Starting game');
-  Menu.game.state.start('Main');
+  this.state.start('Main');
 };
 
 States.Menu = Menu;
