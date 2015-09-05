@@ -11,6 +11,11 @@
             "isBuildCommand": true,
             "isWatching": false,
             "showOutput": "never"
+        },
+        {
+          "taskName": "watch",
+          "isWatching": true,
+          "showOutput": "never"
         }
     ]
 }

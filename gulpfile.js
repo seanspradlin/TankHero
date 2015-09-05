@@ -1,12 +1,12 @@
 'use strict';
 
-var gulp = require('gulp')
-  , sourcemaps = require('gulp-sourcemaps')
-  , concat = require('gulp-concat')
-  , uglify = require('gulp-uglify')
-  , minifyHtml = require('gulp-minify-html')
-  , Config = require('./gulpfile.config')
-  , config = new Config();
+var gulp        = require('gulp')
+  , sourcemaps  = require('gulp-sourcemaps')
+  , concat      = require('gulp-concat')
+  , uglify      = require('gulp-uglify')
+  , minifyHtml  = require('gulp-minify-html')
+  , Config      = require('./gulpfile.config')
+  , config      = new Config();
 
 // Concat + Minify JS
 gulp.task('js-crunch', function () {
@@ -37,6 +37,11 @@ gulp.task('assets', function () {
     .pipe(gulp.dest(config.build));
   return gulp.src(config.source + 'assets/**/*.*')
     .pipe(gulp.dest(config.build + 'assets/'));
+});
+
+// Watch
+gulp.task('watch', function() {
+  return gulp.watch(config.scripts, ['js-crunch']);
 });
 
 gulp.task('default', ['js-crunch', 'html-crunch', 'phaser', 'assets']);
