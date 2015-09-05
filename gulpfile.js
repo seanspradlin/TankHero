@@ -33,8 +33,10 @@ gulp.task('phaser', function () {
 
 // Assets
 gulp.task('assets', function () {
+  gulp.src(config.source + 'favicon.ico')
+    .pipe(gulp.dest(config.build));
   return gulp.src(config.source + 'assets/**/*.*')
-    .pipe(gulp.dest(config.build + '/assets/'));
+    .pipe(gulp.dest(config.build + 'assets/'));
 });
 
 gulp.task('default', ['js-crunch', 'html-crunch', 'phaser', 'assets']);
