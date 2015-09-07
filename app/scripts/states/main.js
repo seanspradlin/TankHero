@@ -34,8 +34,8 @@ Main.create = function() {
   fog2.anchor.y = 1.0;
   fog2.alpha = 0.5;
 
-  player = this.add.existing(new Player(this.game, 50, this.game.height - 50));
-  player.scale.x = 2;
+  player = this.add.existing(new Player(this.game, 100, this.game.height - 40));
+  player.scale.x = -2;
   player.scale.y = 2;
 
   console.log('Game has begun');
@@ -45,12 +45,25 @@ Main.update = function() {
   fog1.x -= 0.5;
   fog2.x -= 1;
 
+  // Move left/right
   if (input.left.isDown) {
     player.reverse();
   } else if (input.right.isDown) {
     player.forward();
   } else {
     player.halt();
+  }
+
+  // Aim up/down
+  if (input.up.isDown && player.cannon.angle <= 25) {
+    player.cannon.angle++;
+  } else if (input.down.isDown && player.cannon.angle >= -5) {
+    player.cannon.angle--;
+  }
+
+  // Attack
+  if (input.attack.isDown) {
+    player.attack();
   }
 };
 
