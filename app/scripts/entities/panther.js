@@ -22,15 +22,15 @@ function Panther(game, x, y, moveSpeed, attackSpeed) {
   this.anchor.y = 1.0;
 
   // Cannon
-  this.cannon = new Phaser.Sprite(this.game, -27, -44, 'sprites', 'panther/cannon1');
-  this.cannon.anchor.x = 1.0;
-  this.cannon.anchor.y = 0.5;
+  var cannon = new Phaser.Sprite(this.game, -27, -44, 'sprites', 'panther/cannon1');
   var firingFrames = Phaser.Animation.generateFrameNames('panther/cannon', 1, 4);
-  this.cannon.animations.add('firing', firingFrames, 10, false, false);
-  this.cannon.events.onAnimationComplete.add(function () {
+  cannon.anchor.x = 1.0;
+  cannon.anchor.y = 0.5;
+  cannon.animations.add('firing', firingFrames, 10, false, false);
+  cannon.events.onAnimationComplete.add(function () {
     self.cannon.animations.previous(firingFrames.length);
   });
-  this.addChild(this.cannon);
+  this.cannon = this.addChild(cannon);
 }
 
 Panther.prototype.forward = function () {
