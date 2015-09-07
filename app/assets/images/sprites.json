@@ -18,7 +18,7 @@
 },
 "bomber/propeller1":
 {
-	"frame": {"x":621,"y":69,"w":16,"h":56},
+	"frame": {"x":628,"y":2,"w":16,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":10,"w":16,"h":56},
@@ -34,7 +34,7 @@
 },
 "bomber/propeller3":
 {
-	"frame": {"x":621,"y":69,"w":16,"h":56},
+	"frame": {"x":628,"y":2,"w":16,"h":56},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":10,"w":16,"h":56},
@@ -98,7 +98,7 @@
 },
 "jeep/body2":
 {
-	"frame": {"x":1020,"y":94,"w":76,"h":22},
+	"frame": {"x":1002,"y":93,"w":76,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":76,"h":22},
@@ -114,7 +114,7 @@
 },
 "jeep/body4":
 {
-	"frame": {"x":1098,"y":91,"w":70,"h":22},
+	"frame": {"x":1080,"y":90,"w":70,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":70,"h":22},
@@ -130,7 +130,7 @@
 },
 "jeep/body6":
 {
-	"frame": {"x":1132,"y":2,"w":54,"h":22},
+	"frame": {"x":1111,"y":2,"w":54,"h":22},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":1,"w":54,"h":22},
@@ -154,7 +154,7 @@
 },
 "jeep/grenadier":
 {
-	"frame": {"x":1170,"y":91,"w":13,"h":22},
+	"frame": {"x":1152,"y":90,"w":13,"h":22},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":13,"h":22},
@@ -162,7 +162,7 @@
 },
 "panther/body1":
 {
-	"frame": {"x":628,"y":2,"w":113,"h":53},
+	"frame": {"x":646,"y":2,"w":113,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":53},
@@ -170,7 +170,7 @@
 },
 "panther/body2":
 {
-	"frame": {"x":743,"y":2,"w":112,"h":53},
+	"frame": {"x":761,"y":2,"w":112,"h":53},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":53},
@@ -178,7 +178,7 @@
 },
 "panther/body3":
 {
-	"frame": {"x":639,"y":57,"w":113,"h":53},
+	"frame": {"x":691,"y":57,"w":113,"h":53},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":53},
@@ -186,7 +186,7 @@
 },
 "panther/body4":
 {
-	"frame": {"x":754,"y":57,"w":112,"h":53},
+	"frame": {"x":806,"y":57,"w":112,"h":53},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":112,"h":53},
@@ -202,7 +202,7 @@
 },
 "panther/cannon2":
 {
-	"frame": {"x":933,"y":2,"w":138,"h":44},
+	"frame": {"x":551,"y":80,"w":138,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":138,"h":44},
@@ -210,7 +210,7 @@
 },
 "panther/cannon3":
 {
-	"frame": {"x":1062,"y":48,"w":134,"h":41},
+	"frame": {"x":1038,"y":47,"w":134,"h":41},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":4,"y":1,"w":134,"h":41},
@@ -226,51 +226,51 @@
 },
 "player/body1":
 {
-	"frame": {"x":1073,"y":2,"w":57,"h":44},
+	"frame": {"x":875,"y":2,"w":57,"h":44},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":18,"y":6,"w":57,"h":44},
-	"sourceSize": {"w":75,"h":50}
+	"spriteSourceSize": {"x":0,"y":6,"w":57,"h":44},
+	"sourceSize": {"w":60,"h":50}
 },
 "player/body2":
 {
-	"frame": {"x":1002,"y":48,"w":58,"h":44},
+	"frame": {"x":979,"y":48,"w":57,"h":43},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":17,"y":6,"w":58,"h":44},
-	"sourceSize": {"w":75,"h":50}
+	"spriteSourceSize": {"x":0,"y":7,"w":57,"h":43},
+	"sourceSize": {"w":60,"h":50}
 },
 "player/body3":
 {
-	"frame": {"x":938,"y":48,"w":62,"h":44},
+	"frame": {"x":920,"y":48,"w":57,"h":44},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":13,"y":6,"w":62,"h":44},
-	"sourceSize": {"w":75,"h":50}
+	"spriteSourceSize": {"x":0,"y":6,"w":57,"h":44},
+	"sourceSize": {"w":60,"h":50}
 },
 "player/body4":
 {
-	"frame": {"x":551,"y":80,"w":68,"h":45},
+	"frame": {"x":993,"y":2,"w":57,"h":43},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":7,"y":5,"w":68,"h":45},
-	"sourceSize": {"w":75,"h":50}
+	"spriteSourceSize": {"x":0,"y":7,"w":57,"h":43},
+	"sourceSize": {"w":60,"h":50}
 },
 "player/body5":
 {
-	"frame": {"x":857,"y":2,"w":74,"h":50},
+	"frame": {"x":934,"y":2,"w":57,"h":44},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":74,"h":50},
-	"sourceSize": {"w":75,"h":50}
+	"spriteSourceSize": {"x":0,"y":6,"w":57,"h":44},
+	"sourceSize": {"w":60,"h":50}
 },
 "player/body6":
 {
-	"frame": {"x":868,"y":54,"w":68,"h":49},
+	"frame": {"x":1052,"y":2,"w":57,"h":43},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":7,"y":1,"w":68,"h":49},
-	"sourceSize": {"w":75,"h":50}
+	"spriteSourceSize": {"x":0,"y":7,"w":57,"h":43},
+	"sourceSize": {"w":60,"h":50}
 },
 "player/cannon1":
 {
@@ -282,7 +282,7 @@
 },
 "player/cannon2":
 {
-	"frame": {"x":938,"y":94,"w":80,"h":25},
+	"frame": {"x":920,"y":94,"w":80,"h":25},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":25},
@@ -298,7 +298,7 @@
 },
 "player/cannon4":
 {
-	"frame": {"x":868,"y":105,"w":44,"h":14},
+	"frame": {"x":628,"y":60,"w":44,"h":14},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":9,"w":44,"h":14},
@@ -317,8 +317,8 @@
 	"version": "1.0",
 	"image": "sprites.png",
 	"format": "RGBA8888",
-	"size": {"w":1198,"h":127},
+	"size": {"w":1176,"h":127},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:8f70c63ba6e867f99f6410db2d62c182:00eeca16e146203e10bdeebce2ddbffd:1eabdf11f75e3a4fe3147baf7b5be24b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a52271f88f3ab601fd0adbeb5ca95ca6:aa2febfeb26b23b4d36599febef5acdf:1eabdf11f75e3a4fe3147baf7b5be24b$"
 }
 }
