@@ -19,28 +19,36 @@ function Player(game, x, y) {
   this.anchor.x = 0.5;
   this.anchor.y = 1.0;
 
-  var cannon = new Phaser.Sprite(this.game, -8, -36, 'sprites', 'player/cannon1');
+  // Physics
+  this.game.physics.enable(this);
+  this.body.collideWorldBounds = true;
+
+  // Cannon
+  this.cannon = new Phaser.Sprite(this.game, -8, -36, 'sprites', 'player/cannon1');
   var firingFrames = Phaser.Animation.generateFrameNames('player/cannon', 1, 4);
-  cannon.anchor.x = 0.0;
-  cannon.anchor.y = 0.5;
-  cannon.scale.x = -2.0;
-  cannon.animations.add('firing', firingFrames, 10, false, false);
-  cannon.events.onAnimationComplete.add(function() {
+  this.cannon.anchor.x = 0.0;
+  this.cannon.anchor.y = 0.5;
+  this.cannon.scale.x = -2.0;
+  this.cannon.animations.add('firing', firingFrames, 10, false, false);
+  this.cannon.events.onAnimationComplete.add(function() {
     self.cannon.animations.previous(firingFrames.length);
   });
-  this.cannon = this.addChild(cannon);
+  this.addChild(this.cannon);
 }
 
 Player.prototype.forward = function() {
   this.animations.play('forward');
+  this.game.physics.arcade.moveToXY(this, this.game.width, this.game.height, 150);
 };
 
 Player.prototype.reverse = function() {
   this.animations.play('reverse');
+  this.game.physics.arcade.moveToXY(this, 0, this.game.height, 150);
 };
 
 Player.prototype.halt = function() {
   this.animations.stop();
+  this.game.physics.arcade.moveToXY(this, this.x, this.game.height, 150);
 };
 
 Player.prototype.attack = function() {
