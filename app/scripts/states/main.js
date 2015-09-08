@@ -8,6 +8,11 @@ Main.create = function() {
   input = this.input.keyboard.createCursorKeys();
   input.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+  // Enable physics
+  this.physics.startSystem(Phaser.Physics.ARCADE);
+  this.physics.arcade.gravity.y = 50.0;
+  this.physics.arcade.bounds.height = Main.game.height - 25;
+
   // Background
   this.add.image(0, 0, 'environment', 'sky').height = this.game.height;
   var trees1 = this.add.image(0,this.game.height - 10, 'environment', 'trees1');
@@ -27,6 +32,7 @@ Main.create = function() {
   // Ground
   ground = this.add.sprite(0, this.game.height, 'environment', 'ground');
   ground.width = this.game.width;
+  ground.height = 25;
   ground.anchor.y = 1.0;
 
   // Fog 2
@@ -34,7 +40,7 @@ Main.create = function() {
   fog2.anchor.y = 1.0;
   fog2.alpha = 0.5;
 
-  player = this.add.existing(new Player(this.game, 100, this.game.height - 40));
+  player = this.add.existing(new Player(this.game, 100, this.game.height - 100));
   player.scale.x = -2;
   player.scale.y = 2;
 
