@@ -5,6 +5,12 @@ Player.prototype.constructor = Player;
 function Player(game, x, y) {
   var self = this;
 
+  // Properties
+  this.firingDelay = 60;
+  this.cooldown = 0;
+  this.moveSpeed = 150;
+  this.shellSpeed = 150;
+
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'player/body1');
 
@@ -38,19 +44,27 @@ function Player(game, x, y) {
 
 Player.prototype.forward = function() {
   this.animations.play('forward');
-  this.game.physics.arcade.moveToXY(this, this.game.width, this.game.height, 150);
+  this.game.physics.arcade.moveToXY(this, this.game.width, this.game.height, this.moveSpeed);
 };
 
 Player.prototype.reverse = function() {
   this.animations.play('reverse');
-  this.game.physics.arcade.moveToXY(this, 0, this.game.height, 150);
+  this.game.physics.arcade.moveToXY(this, 0, this.game.height, this.moveSpeed);
 };
 
 Player.prototype.halt = function() {
   this.animations.stop();
-  this.game.physics.arcade.moveToXY(this, this.x, this.game.height, 150);
+  this.game.physics.arcade.moveToXY(this, this.x, this.game.height, this.moveSpeed);
 };
 
 Player.prototype.attack = function() {
-  this.cannon.animations.play('firing');
+  if (this.cooldown <= 0) {
+    this.cannon.animations.play('firing');
+    this.cooldown = this.firingDelay;
+  }
+};
+
+Player.prototype.tick = function() {
+  console.log(this.body.velocity.x);
+  this.cooldown--;
 };

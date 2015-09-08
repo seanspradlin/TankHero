@@ -71,6 +71,8 @@ Main.update = function() {
   if (input.attack.isDown) {
     player.attack();
   }
+
+  player.tick();
 };
 
 States.Main = Main;
