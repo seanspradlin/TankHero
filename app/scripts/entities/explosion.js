@@ -3,8 +3,6 @@ Explosion.prototype = Object.create(Phaser.Sprite.prototype);
 Explosion.prototype.constructor = Explosion;
 
 function Explosion(game, x, y) {
-  var self = this;
-
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'explosion/1');
 
@@ -16,10 +14,10 @@ function Explosion(game, x, y) {
   this.kill();
 
   this.events.onAnimationComplete.add(function () {
-    self.kill();
-  });
+    this.kill();
+  }, this);
 
   this.events.onRevived.add(function() {
-    self.animations.play('boom');
-  });
+    this.animations.play('boom');
+  }, this);
 }
