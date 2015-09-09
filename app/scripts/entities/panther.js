@@ -3,7 +3,6 @@ Panther.prototype = Object.create(Phaser.Sprite.prototype);
 Panther.prototype.constructor = Panther;
 
 function Panther(game, x, y, moveSpeed, attackSpeed) {
-  var self = this;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'panther/body1');
@@ -28,8 +27,8 @@ function Panther(game, x, y, moveSpeed, attackSpeed) {
   cannon.anchor.y = 0.5;
   cannon.animations.add('firing', firingFrames, 10, false, false);
   cannon.events.onAnimationComplete.add(function () {
-    self.cannon.animations.previous(firingFrames.length);
-  });
+    this.cannon.animations.previous(firingFrames.length);
+  }, this);
   this.cannon = this.addChild(cannon);
 }
 
