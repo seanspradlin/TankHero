@@ -6,10 +6,10 @@ function Player(game, x, y) {
   var self = this;
 
   // Properties
-  this.firingDelay = 60;
-  this.cooldown = 0;
+  this.firingDelay = 750;
+  this.nextFire = 0;
   this.moveSpeed = 150;
-  this.shellSpeed = 150;
+  this.shellSpeed = 600;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'player/body1');
@@ -36,35 +36,43 @@ function Player(game, x, y) {
   this.cannon.anchor.y = 0.5;
   this.cannon.scale.x = -2.0;
   this.cannon.animations.add('firing', firingFrames, 10, false, false);
-  this.cannon.events.onAnimationComplete.add(function() {
+  this.cannon.events.onAnimationComplete.add(function () {
     self.cannon.animations.previous(firingFrames.length);
   });
   this.addChild(this.cannon);
+
+  // Shells
+  this.shells = new Phaser.Group(this.game, this.game.world, 'Player Shells', false, true, Phaser.Physics.ARCADE);
+  for (var i = 0; i < 5; i++) {
+    this.shells.add(new Shell(this.game, 'player/shell'), true);
+  }
 }
 
-Player.prototype.forward = function() {
+Player.prototype.forward = function () {
   this.animations.play('forward');
   this.game.physics.arcade.moveToXY(this, this.game.width, this.game.height, this.moveSpeed);
 };
 
-Player.prototype.reverse = function() {
+Player.prototype.reverse = function () {
   this.animations.play('reverse');
   this.game.physics.arcade.moveToXY(this, 0, this.game.height, this.moveSpeed);
 };
 
-Player.prototype.halt = function() {
+Player.prototype.halt = function () {
   this.animations.stop();
   this.game.physics.arcade.moveToXY(this, this.x, this.game.height, this.moveSpeed);
 };
 
-Player.prototype.attack = function() {
-  if (this.cooldown <= 0) {
-    this.cannon.animations.play('firing');
-    this.cooldown = this.firingDelay;
-  }
-};
+Player.prototype.attack = function () {
+  if (this.game.time.time < this.nextFire) { return; }
 
-Player.prototype.tick = function() {
-  console.log(this.body.velocity.x);
-  this.cooldown--;
+  var shell = this.shells.getFirstExists(false)
+    , angle = this.cannon.angle * -1
+    , x = this.cannon.world.x + this.cannon.width * -1
+    , y = this.cannon.world.y + (this.cannon.rotation * this.cannon.width);
+
+  this.cannon.animations.play('firing');
+  this.nextFire = this.game.time.time + this.firingDelay;
+  shell.reset(x, y);
+  this.game.physics.arcade.velocityFromAngle(angle, this.shellSpeed, shell.body.velocity);
 };
