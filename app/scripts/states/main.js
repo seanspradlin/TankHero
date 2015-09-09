@@ -3,6 +3,7 @@ var States = States || {}
   , Main   = new Phaser.State()
   , ground, fog1, fog2
   , player, enemies, input;
+
 Main.create = function() {
   // Input
   input = this.input.keyboard.createCursorKeys();
@@ -10,7 +11,7 @@ Main.create = function() {
 
   // Enable physics
   this.physics.startSystem(Phaser.Physics.ARCADE);
-  this.physics.arcade.gravity.y = 50.0;
+  this.physics.arcade.gravity.y = 500.0;
   this.physics.arcade.bounds.height = Main.game.height - 25;
 
   // Background
@@ -34,6 +35,9 @@ Main.create = function() {
   ground.width = this.game.width;
   ground.height = 25;
   ground.anchor.y = 1.0;
+  this.game.physics.enable(ground);
+  ground.body.immovable = true;
+  ground.body.allowGravity = false;
 
   // Fog 2
   fog2 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust2');
@@ -72,7 +76,9 @@ Main.update = function() {
     player.attack();
   }
 
-  player.tick();
+  this.game.physics.arcade.collide(ground, player.shells, function(g, s) {
+    s.kill();
+  });
 };
 
 States.Main = Main;
