@@ -5,6 +5,11 @@ Bomber.prototype.constructor = Bomber;
 
 function Bomber(game, x, y) {
 
+  // Properties
+  this.firingDelay = 3000;
+  this.nextFire = 0;
+  this.moveSpeed = 30;
+  
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'bomber/body');
 
