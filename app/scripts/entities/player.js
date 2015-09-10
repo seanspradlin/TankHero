@@ -3,7 +3,6 @@ Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
 function Player(game, x, y) {
-  var self = this;
 
   // Properties
   this.firingDelay = 750;
@@ -37,8 +36,8 @@ function Player(game, x, y) {
   this.cannon.scale.x = -2.0;
   this.cannon.animations.add('firing', firingFrames, 10, false, false);
   this.cannon.events.onAnimationComplete.add(function () {
-    self.cannon.animations.previous(firingFrames.length);
-  });
+    this.cannon.animations.previous(firingFrames.length);
+  }, this);
   this.addChild(this.cannon);
 
   // Shells
