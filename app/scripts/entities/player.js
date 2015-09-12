@@ -43,7 +43,7 @@ function Player(game, x, y) {
   // Shells
   this.shells = new Phaser.Group(this.game, this.game.world, 'Player Shells', false, true, Phaser.Physics.ARCADE);
   for (var i = 0; i < 5; i++) {
-    this.shells.add(new Shell(this.game, 'player/shell'), true);
+    this.shells.add(new Shell(this.game), true);
   }
 }
 
