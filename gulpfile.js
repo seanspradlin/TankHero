@@ -5,43 +5,42 @@ var gulp        = require('gulp')
   , concat      = require('gulp-concat')
   , uglify      = require('gulp-uglify')
   , minifyHtml  = require('gulp-minify-html')
-  , Config      = require('./gulpfile.config')
-  , config      = new Config();
+  , Config      = require('./gulpfile.config');
 
 // Concat + Minify JS
 gulp.task('js-crunch', function () {
-  return gulp.src(config.scripts)
+  return gulp.src(Config.scripts)
     .pipe(sourcemaps.init())
     .pipe(concat('tankhero.min.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(config.build + 'scripts/'));
+    .pipe(gulp.dest(Config.build + 'scripts/'));
 });
 
 // Minify HTML
 gulp.task('html-crunch', function () {
-  return gulp.src(config.source + 'index.html')
+  return gulp.src(Config.source + 'index.html')
     .pipe(minifyHtml())
-    .pipe(gulp.dest(config.build));
+    .pipe(gulp.dest(Config.build));
 });
 
 // Migrate phaser files
 gulp.task('phaser', function () {
-  return gulp.src(config.source + 'vendor/phaser/build/phaser.*')
-    .pipe(gulp.dest(config.build + 'scripts/'));
+  return gulp.src(Config.source + 'vendor/phaser/build/phaser.*')
+    .pipe(gulp.dest(Config.build + 'scripts/'));
 });
 
 // Assets
 gulp.task('assets', function () {
-  gulp.src(config.source + 'favicon.ico')
-    .pipe(gulp.dest(config.build));
-  return gulp.src(config.source + 'assets/**/*.*')
-    .pipe(gulp.dest(config.build + 'assets/'));
+  gulp.src(Config.source + 'favicon.ico')
+    .pipe(gulp.dest(Config.build));
+  return gulp.src(Config.source + 'assets/**/*.*')
+    .pipe(gulp.dest(Config.build + 'assets/'));
 });
 
 // Watch
 gulp.task('watch', function() {
-  return gulp.watch(config.scripts, ['js-crunch']);
+  return gulp.watch(Config.scripts, ['js-crunch']);
 });
 
 gulp.task('default', ['js-crunch', 'html-crunch', 'phaser', 'assets']);
