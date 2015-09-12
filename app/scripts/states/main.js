@@ -2,7 +2,7 @@
 var States = States || {}
   , Main   = new Phaser.State()
   , ground, fog1, fog2
-  , player, enemies, input;
+  , player, enemies = [], input;
 
 Main.create = function() {
   // Input
@@ -38,15 +38,20 @@ Main.create = function() {
   this.game.physics.enable(ground);
   ground.body.immovable = true;
   ground.body.allowGravity = false;
+  ground.body.setSize(this.game.width, ground.height);
 
   // Fog 2
   fog2 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust2');
   fog2.anchor.y = 1.0;
   fog2.alpha = 0.5;
 
+  // Player
   player = this.add.existing(new Player(this.game, 100, this.game.height - 100));
   player.scale.x = -2;
   player.scale.y = 2;
+
+  // Bombers
+  enemies.push(this.add.existing(new Bomber(this.game, this.game.width, 100)));
 
   console.log('Game has begun');
 };
@@ -79,6 +84,15 @@ Main.update = function() {
   this.game.physics.arcade.collide(ground, player.shells, function(g, s) {
     s.kill();
   });
+
+  this.game.physics.arcade.collide(ground, Pool(this.game).bombs, function(g, b) {
+    b.kill();
+  });
+
+  for (var i = 0; i < enemies.length; i++) {
+    enemies[i].forward();
+    enemies[i].attack();
+  }
 };
 
 States.Main = Main;

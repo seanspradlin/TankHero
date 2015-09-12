@@ -10,6 +10,9 @@ function Explosion(game) {
   var boomFrames = Phaser.Animation.generateFrameNames('explosion/', 1, 4);
   this.animations.add('boom', boomFrames, 15, false, false);
 
+  this.anchor.x = 0.5;
+  this.anchor.y = 1.0;
+
   // Start off as dead
   this.exists = false;
 

@@ -16,7 +16,7 @@ var Pool = (function() {
     var container = {};
 
     // Bombs
-    container.bombs = new Phaser.Group(game, game.world, 'Bombs', false, true, Phaser.Physics.ARCADE);
+    container.bombs = new Phaser.Group(game, game.world, 'Bombs', false);
     for (var i = 0; i < 10; i++) {
       container.bombs.add(new Bomb(game), true);
     }

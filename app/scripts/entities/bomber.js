@@ -8,10 +8,17 @@ function Bomber(game, x, y) {
   // Properties
   this.firingDelay = 3000;
   this.nextFire = 0;
-  this.moveSpeed = 30;
-  
+  this.moveSpeed = 45;
+
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'bomber/body');
+
+  // Enable physics
+  this.game.physics.enable(this);
+  this.body.collideWorldBounds = false;
+  this.body.allowGravity = false;
+  this.outOfBoundsKill = true;
+  this.checkWorldBounds = true;
 
   // Propeller
   var propeller = new Phaser.Sprite(this.game, 8, 47, 'sprites', 'bomber/propeller1');
@@ -22,3 +29,19 @@ function Bomber(game, x, y) {
   propeller.animations.play('spinning');
   this.addChild(propeller);
 }
+
+Bomber.prototype.forward = function () {
+  var x = this.scale.x < 0 ? this.game.width * 1.5 : this.game.width * -0.5;
+  this.game.physics.arcade.moveToXY(this, x, this.y, this.moveSpeed);
+};
+
+Bomber.prototype.attack = function () {
+  if (this.game.time.time < this.nextFire) { return; }
+
+  var bomb  = Pool(this.game).bombs.getFirstExists(false)
+    , x     = this.x + 95
+    , y     = this.y + 75;
+
+  this.nextFire = this.game.time.time + this.firingDelay;
+  bomb.reset(x, y);
+};
