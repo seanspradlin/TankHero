@@ -28,6 +28,8 @@ function Bomber(game, x, y) {
   propeller.animations.add('spinning', spinningFrames, 30, true, false);
   propeller.animations.play('spinning');
   this.addChild(propeller);
+
+  this.exists = false;
 }
 
 Bomber.prototype.forward = function () {
@@ -39,8 +41,12 @@ Bomber.prototype.attack = function () {
   if (this.game.time.time < this.nextFire) { return; }
 
   var bomb  = Pool(this.game).bombs.getFirstExists(false)
-    , x     = this.x + 95
+    , scale = this.scale.x
+    , flip  = this.scale.x < 0
+    , x     = flip ? this.x - 95 : this.x + 95
     , y     = this.y + 75;
+
+  bomb.scale.x = scale;
 
   this.nextFire = this.game.time.time + this.firingDelay;
   bomb.reset(x, y);
