@@ -107,7 +107,6 @@ Main.update = function() {
   }, this);
 
   pool.panthers.forEachExists(function(panther) {
-    panther.forward();
     var distance    = Main.physics.arcade.distanceBetween(panther, player)
       , minDistance = panther.rangeFromPlayer - 50
       , maxDistance = panther.rangeFromPlayer + 50;
@@ -116,7 +115,7 @@ Main.update = function() {
       panther.forward();
     } else if (distance < minDistance) {
       panther.reverse();
-    } else if (distance > minDistance && distance < maxDistance) {
+    } else {
       panther.halt();
     }
 
