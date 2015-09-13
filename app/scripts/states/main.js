@@ -62,6 +62,9 @@ Main.create = function() {
   // Bombers
   pool.bombers.getFirstExists(false).reset();
 
+  // Panthers
+  pool.panthers.getFirstExists(false).reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom);
+
   console.log('Game has begun');
 };
 
@@ -101,6 +104,23 @@ Main.update = function() {
   pool.bombers.forEachExists(function(bomber) {
     bomber.forward();
     bomber.attack();
+  }, this);
+
+  pool.panthers.forEachExists(function(panther) {
+    panther.forward();
+    var distance    = Main.physics.arcade.distanceBetween(panther, player)
+      , minDistance = panther.rangeFromPlayer - 50
+      , maxDistance = panther.rangeFromPlayer + 50;
+
+    if (distance > maxDistance) {
+      panther.forward();
+    } else if (distance < minDistance) {
+      panther.reverse();
+    } else if (distance > minDistance && distance < maxDistance) {
+      panther.halt();
+    }
+
+    panther.attack();
   }, this);
 };
 

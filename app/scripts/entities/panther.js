@@ -2,12 +2,20 @@
 Panther.prototype = Object.create(Phaser.Sprite.prototype);
 Panther.prototype.constructor = Panther;
 
-function Panther(game, x, y, moveSpeed, attackSpeed) {
+function Panther(game, x, y, moveSpeed, firingDelay, rangeFromPlayer) {
+
+  // Properties
+  this.nextFire = 0;
+  this.firingDelay = firingDelay;
+  this.moveSpeed = moveSpeed;
+  this.rangeFromPlayer = rangeFromPlayer;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'panther/body1');
-  this.moveSpeed = moveSpeed;
-  this.attackSpeed = attackSpeed;
+
+  // Physics
+  this.game.physics.enable(this);
+  this.body.collideWorldBounds = true;
 
   // Animations
   var forwardFrames = Phaser.Animation.generateFrameNames('panther/body', 4, 1);
@@ -30,20 +38,32 @@ function Panther(game, x, y, moveSpeed, attackSpeed) {
     this.cannon.animations.previous(firingFrames.length);
   }, this);
   this.cannon = this.addChild(cannon);
+
+
+  this.scale.x = 2.0;
+  this.scale.y = 2.0;
+
+  this.exists = false;
 }
 
 Panther.prototype.forward = function () {
   this.animations.play('forward');
+  this.game.physics.arcade.moveToXY(this, 0, this.game.height, this.moveSpeed);
 };
 
 Panther.prototype.reverse = function () {
   this.animations.play('reverse');
+  this.game.physics.arcade.moveToXY(this, this.game.width, this.game.height, this.moveSpeed);
 };
 
 Panther.prototype.halt = function() {
   this.animations.stop();
+  this.game.physics.arcade.moveToXY(this, this.x, this.game.height, this.moveSpeed);
 };
 
 Panther.prototype.attack = function () {
+  if (this.game.time.time < this.nextFire) { return; }
+
   this.cannon.animations.play('firing');
+  this.nextFire = this.game.time.time + this.firingDelay;
 };

@@ -40,6 +40,16 @@ var Pool = (function() {
       container.bombers.add(bomber);
     }
 
+    // Panthers
+    container.panthers = new Phaser.Group(game, game.world, 'Panthers', false);
+    for (var i = 0; i< 4; i++) {
+      var moveSpeed       = 45 + Math.random() * 50
+        , firingDelay     = 2000 + Math.random() * 2000
+        , rangeFromPlayer = 300 + Math.random() * 400
+        , panther         = new Panther(game, 0, 0, moveSpeed, firingDelay, rangeFromPlayer);
+      container.panthers.add(panther);
+    }
+
     return container;
   }
 }());
