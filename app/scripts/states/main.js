@@ -2,7 +2,7 @@
 var States = States || {}
   , Main   = new Phaser.State()
   , ground, fog1, fog2
-  , player, enemies = [], input;
+  , player, input, pool;
 
 Main.create = function() {
   // Input
@@ -12,7 +12,13 @@ Main.create = function() {
   // Enable physics
   this.physics.startSystem(Phaser.Physics.ARCADE);
   this.physics.arcade.gravity.y = 500.0;
-  this.physics.arcade.bounds.height = Main.game.height - 25;
+
+  // Bounds
+  var boundsX       = this.game.width * -0.5
+    , boundsY       = 0
+    , boundsWidth   = this.game.width * 2.0
+    , boundsHeight  = this.game.height - 25;
+  this.physics.arcade.bounds = new Phaser.Rectangle(boundsX, boundsY, boundsWidth, boundsHeight);
 
   // Background
   this.add.image(0, 0, 'environment', 'sky').height = this.game.height;
@@ -45,13 +51,16 @@ Main.create = function() {
   fog2.anchor.y = 1.0;
   fog2.alpha = 0.5;
 
+  // Pool
+  pool = Pool(this.game);
+
   // Player
   player = this.add.existing(new Player(this.game, 100, this.game.height - 100));
   player.scale.x = -2;
   player.scale.y = 2;
 
   // Bombers
-  enemies.push(this.add.existing(new Bomber(this.game, this.game.width, 100)));
+  pool.bombers.getFirstExists(false).reset();
 
   console.log('Game has begun');
 };
@@ -89,10 +98,10 @@ Main.update = function() {
     b.kill();
   });
 
-  for (var i = 0; i < enemies.length; i++) {
-    enemies[i].forward();
-    enemies[i].attack();
-  }
+  pool.bombers.forEachExists(function(bomber) {
+    bomber.forward();
+    bomber.attack();
+  }, this);
 };
 
 States.Main = Main;
