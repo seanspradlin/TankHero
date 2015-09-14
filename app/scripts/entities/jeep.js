@@ -48,5 +48,14 @@ Jeep.prototype.forward = function () {
 };
 
 Jeep.prototype.attack = function() {
+  if (this.game.time.time < this.nextFire) { return ; }
 
+  var grenade = Pool(this.game).grenades.getFirstExists(false)
+    , angle = 220
+    , x = this.x - 50
+    , y = this.y - 50;
+  this.nextFire = this.game.time.time + this.firingDelay;
+  grenade.reset(x, y);
+
+  this.game.physics.arcade.velocityFromAngle(angle, 450, grenade.body.velocity);
 };
