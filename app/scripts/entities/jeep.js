@@ -3,7 +3,11 @@
 Jeep.prototype = Object.create(Phaser.Sprite.prototype);
 Jeep.prototype.constructor = Jeep;
 
-function Jeep(game, x, y) {
+function Jeep(game, moveSpeed, firingDelay) {
+
+  this.nextFire = 0;
+  this.firingDelay = firingDelay;
+  this.moveSpeed = moveSpeed;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'jeep/body1');
@@ -32,3 +36,11 @@ function Jeep(game, x, y) {
   this.scale.x = 3;
   this.scale.y = 3;
 }
+
+Jeep.prototype.forward = function () {
+  this.game.physics.arcade.moveToXY(this, 0, this.game.height, this.moveSpeed);
+};
+
+Jeep.prototype.attack = function() {
+
+};

@@ -42,12 +42,23 @@ var Pool = (function() {
 
     // Panthers
     container.panthers = new Phaser.Group(game, game.world, 'Panthers', false);
-    for (var i = 0; i< 4; i++) {
+    for (var i = 0; i < 4; i++) {
       var moveSpeed       = 45 + Math.random() * 50
         , firingDelay     = 2000 + Math.random() * 2000
         , rangeFromPlayer = 300 + Math.random() * 400
-        , panther         = new Panther(game, 0, 0, moveSpeed, firingDelay, rangeFromPlayer);
+        , panther         = new Panther(game, moveSpeed, firingDelay, rangeFromPlayer);
+
       container.panthers.add(panther);
+    }
+
+    // Jeeps
+    container.jeeps = new Phaser.Group(game, game.world, 'Jeeps', false);
+    for (var i = 0; i < 8; i++) {
+      var moveSpeed   = 90 + Math.random() * 50
+        , firingDelay = 1000 + Math.random() * 2000
+        , jeep        = new Jeep(game, moveSpeed, firingDelay);
+
+      container.jeeps.add(jeep);
     }
 
     return container;
