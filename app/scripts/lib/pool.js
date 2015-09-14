@@ -18,13 +18,19 @@ var Pool = (function() {
     // Bombs
     container.bombs = new Phaser.Group(game, game.world, 'Bombs', false);
     for (var i = 0; i < 10; i++) {
-      container.bombs.add(new Bomb(game), true);
+      container.bombs.add(new Bomb(game));
+    }
+
+    // Grenades
+    container.grenades = new Phaser.Group(game, game.world, 'Grenades', false, true, Phaser.Physics.ARCADE);
+    for (var i = 0; i < 20; i++) {
+      container.grenades.add(new Shell(game, 'jeep/grenade'), true);
     }
 
     // Bomb Explosions
     container.bombExplosions = new Phaser.Group(game, game.world, 'Bomb Explosions', false, false);
     for (var i = 0; i < 10; i++) {
-      container.bombExplosions.add(new Explosion(game), true);
+      container.bombExplosions.add(new Explosion(game));
     }
 
     // Bombers
@@ -55,7 +61,7 @@ var Pool = (function() {
     container.jeeps = new Phaser.Group(game, game.world, 'Jeeps', false);
     for (var i = 0; i < 8; i++) {
       var moveSpeed   = 90 + Math.random() * 50
-        , firingDelay = 1000 + Math.random() * 2000
+        , firingDelay = 1500 + Math.random() * 2000
         , jeep        = new Jeep(game, moveSpeed, firingDelay);
 
       container.jeeps.add(jeep);
