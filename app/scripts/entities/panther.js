@@ -2,7 +2,7 @@
 Panther.prototype = Object.create(Phaser.Sprite.prototype);
 Panther.prototype.constructor = Panther;
 
-function Panther(game, x, y, moveSpeed, firingDelay, rangeFromPlayer) {
+function Panther(game, moveSpeed, firingDelay, rangeFromPlayer) {
 
   // Properties
   this.nextFire = 0;
@@ -11,7 +11,7 @@ function Panther(game, x, y, moveSpeed, firingDelay, rangeFromPlayer) {
   this.rangeFromPlayer = rangeFromPlayer;
 
   // Call base constructor
-  Phaser.Sprite.call(this, game, x, y, 'sprites', 'panther/body1');
+  Phaser.Sprite.call(this, game, 0, 0, 'sprites', 'panther/body1');
 
   // Physics
   this.game.physics.enable(this);
