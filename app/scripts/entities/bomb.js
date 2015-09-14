@@ -15,7 +15,6 @@ function Bomb(game) {
 
   // Physics
   game.physics.enable(this);
-  // this.body.collideWorldBounds = true;
   this.body.outOfBoundsKill = true;
   this.checkWorldBounds = true;
 
