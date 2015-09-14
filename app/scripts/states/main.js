@@ -104,6 +104,10 @@ Main.update = function() {
     b.kill();
   });
 
+  this.game.physics.arcade.collide(ground, Pool(this.game).grenades, function(g, gr) {
+    gr.kill();
+  });
+
   pool.bombers.forEachExists(function(bomber) {
     bomber.forward();
     bomber.attack();
