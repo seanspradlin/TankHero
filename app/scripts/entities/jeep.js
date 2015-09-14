@@ -12,6 +12,10 @@ function Jeep(game, moveSpeed, firingDelay) {
   // Call base constructor
   Phaser.Sprite.call(this, game, 0, 0, 'sprites', 'jeep/body1');
 
+  // Physics
+  this.game.physics.enable(this);
+  this.body.collideWorldBounds = true;
+
   // Animations
   var drivingFrames = Phaser.Animation.generateFrameNames('jeep/body', 6, 1);
   this.animations.add('driving', drivingFrames, 8, true, false);
@@ -33,8 +37,10 @@ function Jeep(game, moveSpeed, firingDelay) {
   grenadier.anchor.y = 1.0;
   this.addChild(grenadier);
 
-  this.scale.x = 3;
-  this.scale.y = 3;
+  this.scale.x = 2;
+  this.scale.y = 2;
+
+  this.exists = false;
 }
 
 Jeep.prototype.forward = function () {
