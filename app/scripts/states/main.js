@@ -65,6 +65,9 @@ Main.create = function() {
   // Panthers
   pool.panthers.getFirstExists(false).reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom);
 
+  // Jeeps
+  pool.jeeps.getFirstExists(false).reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom);
+
   console.log('Game has begun');
 };
 
@@ -121,6 +124,11 @@ Main.update = function() {
 
     panther.attack();
   }, this);
+
+  pool.jeeps.forEachExists(function(jeep) {
+    jeep.forward();
+    jeep.attack();
+  });
 };
 
 States.Main = Main;
