@@ -10,7 +10,7 @@ function Jeep(game, moveSpeed, firingDelay) {
   this.moveSpeed = moveSpeed;
 
   // Call base constructor
-  Phaser.Sprite.call(this, game, x, y, 'sprites', 'jeep/body1');
+  Phaser.Sprite.call(this, game, 0, 0, 'sprites', 'jeep/body1');
 
   // Animations
   var drivingFrames = Phaser.Animation.generateFrameNames('jeep/body', 6, 1);
