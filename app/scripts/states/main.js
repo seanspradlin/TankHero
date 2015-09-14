@@ -129,6 +129,11 @@ Main.update = function() {
     jeep.forward();
     jeep.attack();
   });
+
+  // Make grenades spin
+  pool.grenades.forEachExists(function(grenade) {
+    grenade.body.angularVelocity = -300;
+  });
 };
 
 States.Main = Main;
