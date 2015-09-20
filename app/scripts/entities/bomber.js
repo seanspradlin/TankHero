@@ -15,10 +15,9 @@ function Bomber(game, x, y) {
 
   // Enable physics
   this.game.physics.enable(this);
-  this.body.collideWorldBounds = false;
   this.body.allowGravity = false;
-  this.outOfBoundsKill = true;
   this.checkWorldBounds = true;
+  this.outOfBoundsKill = true;
 
   // Propeller
   var propeller = new Phaser.Sprite(this.game, 8, 47, 'sprites', 'bomber/propeller1');
@@ -33,7 +32,7 @@ function Bomber(game, x, y) {
 }
 
 Bomber.prototype.forward = function () {
-  var x = this.scale.x < 0 ? this.game.width * 1.5 : this.game.width * -0.5;
+  var x = this.scale.x < 0 ? this.game.width * 2.5 : this.game.width * -2.5;
   this.game.physics.arcade.moveToXY(this, x, this.y, this.moveSpeed);
 };
 
