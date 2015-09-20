@@ -9,19 +9,21 @@ Main.create = function() {
   input = this.input.keyboard.createCursorKeys();
   input.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-  // Enable physics
-  this.physics.startSystem(Phaser.Physics.ARCADE);
-  this.physics.arcade.gravity.y = 500.0;
-
   // Bounds
   var boundsX       = this.game.width * -0.5
     , boundsY       = 0
     , boundsWidth   = this.game.width * 2.0
     , boundsHeight  = this.game.height - 25;
-  this.physics.arcade.bounds = new Phaser.Rectangle(boundsX, boundsY, boundsWidth, boundsHeight);
+  this.world.bounds = new Phaser.Rectangle(boundsX, boundsY, boundsWidth, boundsHeight);
+
+  // Enable physics
+  this.physics.startSystem(Phaser.Physics.ARCADE);
+  this.physics.arcade.gravity.y = 500.0;
 
   // Background
-  this.add.image(0, 0, 'environment', 'sky').height = this.game.height;
+  var sky = this.add.image(0, 0, 'environment', 'sky');
+  sky.width = this.game.width;
+  sky.height = this.game.height;
   var trees1 = this.add.image(0,this.game.height - 10, 'environment', 'trees1');
   trees1.width = this.game.width;
   trees1.alpha = 0.3;
@@ -66,7 +68,7 @@ Main.create = function() {
   pool.panthers.getFirstExists(false).reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom);
 
   // Jeeps
-  pool.jeeps.getFirstExists(false).reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom);
+  pool.jeeps.getFirstExists(false).reset(this.world.bounds.right, this.physics.arcade.bounds.bottom);
 
   console.log('Game has begun');
 };
@@ -96,6 +98,7 @@ Main.update = function() {
     player.attack();
   }
 
+  // Kill on collision
   this.game.physics.arcade.collide(ground, player.shells, groundCollider);
   this.game.physics.arcade.collide(ground, pool.bombs, groundCollider);
   this.game.physics.arcade.collide(ground, pool.grenades, groundCollider);
@@ -125,6 +128,9 @@ Main.update = function() {
   pool.jeeps.forEachExists(function(jeep) {
     jeep.forward();
     jeep.attack();
+    if (jeep.x < -100) {
+      jeep.kill();
+    }
   });
 
   // Make grenades spin
