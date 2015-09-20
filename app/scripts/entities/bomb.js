@@ -7,8 +7,6 @@ function Bomb(game) {
   this.texture.baseTexture.scaleMode = PIXI.scaleModes.NEAREST;
   this.anchor.x = 0.5;
   this.anchor.y = 1.0;
-  this.outOfBoundsKill = true;
-  this.checkWorldBounds = true;
   this.tracking = false;
   this.scaleSpeed = 0;
   this.exists = false;
