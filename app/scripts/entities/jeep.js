@@ -44,7 +44,9 @@ function Jeep(game, moveSpeed, firingDelay) {
 }
 
 Jeep.prototype.forward = function () {
-  this.game.physics.arcade.moveToXY(this, 0, this.game.height, this.moveSpeed);
+  var x = this.game.width * -2.5
+    , y = this.game.height;
+  this.game.physics.arcade.moveToXY(this, x, y, this.moveSpeed);
 };
 
 Jeep.prototype.attack = function() {
