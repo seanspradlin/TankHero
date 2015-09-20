@@ -96,17 +96,10 @@ Main.update = function() {
     player.attack();
   }
 
-  this.game.physics.arcade.collide(ground, player.shells, function(g, s) {
-    s.kill();
-  });
+  this.game.physics.arcade.collide(ground, player.shells, groundCollider);
+  this.game.physics.arcade.collide(ground, pool.bombs, groundCollider);
+  this.game.physics.arcade.collide(ground, pool.grenades, groundCollider);
 
-  this.game.physics.arcade.collide(ground, Pool(this.game).bombs, function(g, b) {
-    b.kill();
-  });
-
-  this.game.physics.arcade.collide(ground, Pool(this.game).grenades, function(g, gr) {
-    gr.kill();
-  });
 
   pool.bombers.forEachExists(function(bomber) {
     bomber.forward();
@@ -139,5 +132,9 @@ Main.update = function() {
     grenade.body.angularVelocity = -300;
   });
 };
+
+function groundCollider(ground, obj) {
+  obj.kill();
+}
 
 States.Main = Main;
