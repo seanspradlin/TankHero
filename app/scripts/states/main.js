@@ -5,6 +5,10 @@ var States = States || {}
   , player, input, pool;
 
 Main.create = function() {
+  // Properties
+  this.nextSpawn = 0;
+  this.spawnDelay = 3000;
+
   // Input
   input = this.input.keyboard.createCursorKeys();
   input.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -57,18 +61,9 @@ Main.create = function() {
   pool = Pool(this.game);
 
   // Player
-  player = this.add.existing(new Player(this.game, 100, this.game.height - 100));
+  player = this.add.existing(new Player(this.game, 100, this.game.height - 50));
   player.scale.x = -2;
   player.scale.y = 2;
-
-  // Bombers
-  pool.bombers.getFirstExists(false).reset();
-
-  // Panthers
-  pool.panthers.getFirstExists(false).reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom);
-
-  // Jeeps
-  pool.jeeps.getFirstExists(false).reset(this.world.bounds.right, this.physics.arcade.bounds.bottom);
 
   console.log('Game has begun');
 };
@@ -76,6 +71,8 @@ Main.create = function() {
 Main.update = function() {
   fog1.x -= 0.5;
   fog2.x -= 1;
+
+  this.spawnEnemies();
 
   // Move left/right
   if (input.left.isDown) {
@@ -103,7 +100,7 @@ Main.update = function() {
   this.game.physics.arcade.collide(ground, pool.bombs, groundCollider);
   this.game.physics.arcade.collide(ground, pool.grenades, groundCollider);
 
-
+  // Update existing enemies
   pool.bombers.forEachExists(function(bomber) {
     bomber.forward();
     bomber.attack();
@@ -142,5 +139,36 @@ Main.update = function() {
 function groundCollider(ground, obj) {
   obj.kill();
 }
+
+Main.spawnEnemies = function() {
+  if (this.game.time.time < this.nextSpawn) { return; }
+  switch (Math.floor(Math.random() * 3)) {
+    case 0: // Jeep
+      if (pool.jeeps.countDead() > 0) {
+        pool.jeeps
+            .getFirstExists(false)
+            .reset(this.world.bounds.right, this.physics.arcade.bounds.bottom);
+        this.nextSpawn = this.game.time.time + this.spawnDelay;
+      }
+      break;
+    case 1: // Bombers
+      if (pool.bombers.countDead() > 0) {
+        var bomber = pool.bombers.getFirstExists(false)
+          , flip = bomber.scale.x === -1
+          , x = flip ? this.game.width * -0.5 : this.game.width * 1.5
+          , y = 100 + (300 * Math.random());
+        bomber.reset(x, y);
+        this.nextSpawn = this.game.time.time + this.spawnDelay;
+      }
+      break;
+    case 2: // Panthers
+      if (pool.panthers.countDead() > 0) {
+        pool.panthers
+            .getFirstExists(false)
+            .reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom);
+        this.nextSpawn = this.game.time.time + this.spawnDelay;
+      }
+  }
+};
 
 States.Main = Main;
