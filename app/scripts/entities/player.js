@@ -9,6 +9,7 @@ function Player(game, x, y) {
   this.nextFire = 0;
   this.moveSpeed = 150;
   this.shellSpeed = 600;
+  this.health = 20;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'player/body1');

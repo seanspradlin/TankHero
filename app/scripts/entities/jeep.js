@@ -8,6 +8,7 @@ function Jeep(game, moveSpeed, firingDelay) {
   this.nextFire = 0;
   this.firingDelay = firingDelay;
   this.moveSpeed = moveSpeed;
+  this.health = 1;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, 0, 0, 'sprites', 'jeep/body1');
