@@ -53,7 +53,7 @@ var Pool = (function() {
 
     // Panthers
     container.panthers = new Phaser.Group(game, game.world, 'Panthers', false);
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 1; i++) {
       var moveSpeed       = 45 + Math.random() * 50
         , firingDelay     = 2000 + Math.random() * 2000
         , rangeFromPlayer = 300 + Math.random() * 400
