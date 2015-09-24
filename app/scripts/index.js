@@ -1,7 +1,7 @@
 'use strict';
 
 window.onload = function() {
-  var game = new Phaser.Game(1536, 768, Phaser.AUTO, 'game');
+  var game = new Phaser.Game(1024, 768, Phaser.AUTO, 'game');
   game.state.add('Boot', States.Boot);
   game.state.add('Preload', States.Preload);
   game.state.add('Menu', States.Menu);
