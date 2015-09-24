@@ -7,7 +7,7 @@ function Player(game, x, y) {
   // Properties
   this.firingDelay = 750;
   this.nextFire = 0;
-  this.moveSpeed = 150;
+  this.moveSpeed = 300;
   this.shellSpeed = 600;
   this.health = 20;
 
@@ -28,6 +28,7 @@ function Player(game, x, y) {
   // Physics
   this.game.physics.enable(this);
   this.body.collideWorldBounds = true;
+  this.body.setSize(60, 38);
 
   // Cannon
   this.cannon = new Phaser.Sprite(this.game, -8, -36, 'sprites', 'player/cannon1');
