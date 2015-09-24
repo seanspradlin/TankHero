@@ -45,6 +45,7 @@ function Panther(game, moveSpeed, firingDelay, rangeFromPlayer) {
   this.scale.y = 2.0;
 
   this.exists = false;
+  this.alive = false;
 }
 
 Panther.prototype.forward = function () {

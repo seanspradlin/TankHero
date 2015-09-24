@@ -11,6 +11,10 @@ function Shell(game, key) {
   this.scale.x = 2;
   this.scale.y = 2;
   this.exists = false;
+  this.alive = false;
+  this.outOfBoundsKill = true;
+  this.checkWorldBounds = true;
+
 
   this.events.onKilled.add(function() {
     // play explosion

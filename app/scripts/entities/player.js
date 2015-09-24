@@ -65,6 +65,7 @@ Player.prototype.halt = function () {
 
 Player.prototype.attack = function () {
   if (this.game.time.time < this.nextFire) { return; }
+  if (this.shells.countDead() === 0) { return; }
 
   var shell = this.shells.getFirstExists(false)
     , angle = this.cannon.angle * -1

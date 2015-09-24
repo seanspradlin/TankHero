@@ -29,6 +29,7 @@ function Bomber(game, x, y) {
   this.addChild(propeller);
 
   this.exists = false;
+  this.alive = false;
 }
 
 Bomber.prototype.forward = function () {
@@ -38,8 +39,9 @@ Bomber.prototype.forward = function () {
 
 Bomber.prototype.attack = function () {
   if (this.game.time.time < this.nextFire) { return; }
-
-  var bomb  = Pool(this.game).bombs.getFirstExists(false)
+  var pool  = Pool(this.game);
+  if (pool.bombs.countDead() === 0) { return; }
+  var bomb  = pool.bombs.getFirstExists(false)
     , scale = this.scale.x
     , flip  = this.scale.x < 0
     , x     = flip ? this.x - 95 : this.x + 95

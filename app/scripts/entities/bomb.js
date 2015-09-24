@@ -10,10 +10,11 @@ function Bomb(game) {
   this.tracking = false;
   this.scaleSpeed = 0;
   this.exists = false;
+  this.alive = false;
 
   // Physics
   game.physics.enable(this);
-  this.body.outOfBoundsKill = true;
+  this.outOfBoundsKill = true;
   this.checkWorldBounds = true;
 
   this.events.onKilled.add(function() {
