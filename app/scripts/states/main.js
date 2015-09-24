@@ -186,7 +186,7 @@ Main.spawnEnemies = function() {
         var bomber = pool.bombers.getFirstExists(false)
           , flip = bomber.scale.x === -1
           , x = flip ? this.game.width * -0.5 : this.game.width * 1.5
-          , y = 100 + (300 * Math.random());
+          , y = 300 * Math.random();
         bomber.reset(x, y);
         this.nextSpawn = this.game.time.time + this.spawnDelay;
       }
