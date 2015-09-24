@@ -41,7 +41,7 @@ var Pool = (function() {
 
     // Bombers
     container.bombers = new Phaser.Group(game, game.world, 'Bombers', false);
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 4; i++) {
       var flip    = i % 2 === 0
         , scale   = flip ? -1 : 1
         , x       = flip ? game.width * -0.5 : game.width * 1.5
