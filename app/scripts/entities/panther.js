@@ -10,6 +10,7 @@ function Panther(game, moveSpeed, firingDelay, rangeFromPlayer) {
   this.moveSpeed = moveSpeed;
   this.rangeFromPlayer = rangeFromPlayer;
   this.health = 6;
+  this.scoreValue = 5;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, 0, 0, 'sprites', 'panther/body1');

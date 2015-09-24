@@ -165,7 +165,7 @@ function objectCollider(object, ammo) {
   object.health--;
   if (object.health <= 0) {
     object.kill();
-    totalKills++;
+    totalKills += object.scoreValue || 1;
   }
   ammo.kill();
 }
