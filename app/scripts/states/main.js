@@ -2,12 +2,13 @@
 var States = States || {}
   , Main   = new Phaser.State()
   , ground, fog1, fog2
-  , player, input, pool;
+  , player, input, pool, totalKills;
 
 Main.create = function() {
   // Properties
   this.nextSpawn = 0;
   this.spawnDelay = 2000;
+  totalKills = 0;
 
   // Input
   input = this.input.keyboard.createCursorKeys();
@@ -65,10 +66,16 @@ Main.create = function() {
   player.scale.x = -2;
   player.scale.y = 2;
 
+  this.healthCounter = Main.game.add.text(50, 50, '', {font: '18px Arial', fill: '#ffffff'});
+  this.killCounter = Main.game.add.text(50, 75, '', {font: '18px Arial', fill: '#ffffff'});
+
   console.log('Game has begun');
 };
 
 Main.update = function() {
+  this.healthCounter.text = 'Health: ' + player.health;
+  this.killCounter.text = 'Kills: ' + totalKills;
+
   if (player.health === 0) {
     this.state.start('Menu');
   }
@@ -156,7 +163,10 @@ function groundCollider(ground, obj) {
 
 function objectCollider(object, ammo) {
   object.health--;
-  if (object.health <= 0) object.kill();
+  if (object.health <= 0) {
+    object.kill();
+    totalKills++;
+  }
   ammo.kill();
 }
 
