@@ -2,17 +2,13 @@
 var States = States || {}
   , Main   = new Phaser.State()
   , ground, fog1, fog2
-  , player, input, pool, totalKills;
+  , player, pool, totalKills;
 
 Main.create = function() {
   // Properties
   this.nextSpawn = 0;
   this.spawnDelay = 2000;
   totalKills = 0;
-
-  // Input
-  input = this.input.keyboard.createCursorKeys();
-  input.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   // Bounds
   var boundsX       = this.game.width * -0.5
@@ -66,8 +62,8 @@ Main.create = function() {
   player.scale.x = -2;
   player.scale.y = 2;
 
-  this.healthCounter = Main.game.add.text(50, 50, '', {font: '18px Arial', fill: '#ffffff'});
-  this.killCounter = Main.game.add.text(50, 75, '', {font: '18px Arial', fill: '#ffffff'});
+  this.healthCounter = this.add.text(50, 50, '', {font: '18px Arial', fill: '#ffffff'});
+  this.killCounter = this.add.text(50, 75, '', {font: '18px Arial', fill: '#ffffff'});
 
   console.log('Game has begun');
 };
@@ -77,7 +73,7 @@ Main.update = function() {
   this.killCounter.text = 'Kills: ' + totalKills;
 
   if (player.health === 0) {
-    this.state.start('Menu');
+    this.state.start('End');
   }
 
   fog1.x -= 0.5;

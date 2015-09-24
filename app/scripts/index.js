@@ -6,6 +6,7 @@ window.onload = function() {
   game.state.add('Preload', States.Preload);
   game.state.add('Menu', States.Menu);
   game.state.add('Main', States.Main);
+  game.state.add('End', States.End);
 
   game.state.start('Boot');
 };
