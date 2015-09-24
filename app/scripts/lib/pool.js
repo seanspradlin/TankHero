@@ -35,20 +35,19 @@ var Pool = (function() {
 
     // Bombers
     container.bombers = new Phaser.Group(game, game.world, 'Bombers', false);
-    for (var i = 0; i < 4; i++) {
-      var flip    = i % 1 === 0
+    for (var i = 0; i < 6; i++) {
+      var flip    = i % 2 === 0
         , scale   = flip ? -1 : 1
-        , x       = flip ? game.width * - 0.5 : game.width * 1.5
+        , x       = flip ? game.width * -0.5 : game.width * 1.5
         , y       = 200 + (200 * Math.random())
         , bomber  = new Bomber(game, x, y);
-
       bomber.scale.x = scale;
       container.bombers.add(bomber);
     }
 
     // Panthers
     container.panthers = new Phaser.Group(game, game.world, 'Panthers', false);
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 2; i++) {
       var moveSpeed       = 45 + Math.random() * 50
         , firingDelay     = 2000 + Math.random() * 2000
         , rangeFromPlayer = 300 + Math.random() * 400
