@@ -27,6 +27,12 @@ var Pool = (function() {
       container.grenades.add(new Shell(game, 'jeep/grenade'), true);
     }
 
+    // Panther Shells
+    container.pantherShells = new Phaser.Group(game, game.world, 'Panther Shells', false, true, Phaser.Physics.ARCADE);
+    for (var i = 0; i < 10; i++) {
+      container.pantherShells.add(new Shell(game, 'player/shell'), true);
+    }
+
     // Bomb Explosions
     container.bombExplosions = new Phaser.Group(game, game.world, 'Bomb Explosions', false, false);
     for (var i = 0; i < 10; i++) {

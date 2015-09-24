@@ -65,6 +65,15 @@ Panther.prototype.halt = function() {
 
 Panther.prototype.attack = function () {
   if (this.game.time.time < this.nextFire) { return; }
+  var pool = Pool(this.game);
+  if (pool.pantherShells.countDead() === 0) { return; }
+
+  var shell = pool.pantherShells.getFirstExists(false)
+    , x     = this.cannon.world.x + this.cannon.width * -1
+    , y     = this.cannon.world.y;
+
+  shell.reset(x, y);
+  this.game.physics.arcade.velocityFromAngle(-180, 900, shell.body.velocity);
 
   this.cannon.animations.play('firing');
   this.nextFire = this.game.time.time + this.firingDelay;

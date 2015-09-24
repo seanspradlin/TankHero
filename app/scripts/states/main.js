@@ -69,6 +69,10 @@ Main.create = function() {
 };
 
 Main.update = function() {
+  if (player.health === 0) {
+    this.state.start('Menu');
+  }
+
   fog1.x -= 0.5;
   fog2.x -= 1;
 
@@ -99,10 +103,12 @@ Main.update = function() {
   this.game.physics.arcade.collide(ground, player.shells, groundCollider);
   this.game.physics.arcade.collide(ground, pool.bombs, groundCollider);
   this.game.physics.arcade.collide(ground, pool.grenades, groundCollider);
+  this.game.physics.arcade.collide(ground, pool.pantherShells, groundCollider);
 
   // Damage player
   this.game.physics.arcade.collide(player, pool.bombs, objectCollider);
-  this.game.physics.arcade.collide(player, player.grenades, objectCollider);
+  this.game.physics.arcade.collide(player, pool.grenades, objectCollider);
+  this.game.physics.arcade.collide(player, pool.pantherShells, objectCollider);
 
   // Damage enemies
   this.game.physics.arcade.collide(pool.panthers, player.shells, objectCollider);
