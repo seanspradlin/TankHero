@@ -55,7 +55,7 @@ Main.create = function() {
   fog2.alpha = 0.5;
 
   // Pool
-  pool = Pool(this.game);
+  pool = Pool(this.game, true);
 
   // Player
   player = this.add.existing(new Player(this.game, 100, this.game.height - 50));

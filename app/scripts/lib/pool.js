@@ -4,8 +4,8 @@ var Pool = (function() {
   var instance;
   var game;
 
-  return function(sourceGame) {
-    if (!instance) {
+  return function(sourceGame, refresh) {
+    if (!instance || refresh) {
       game = sourceGame;
       instance = populate();
     }
