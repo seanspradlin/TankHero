@@ -7,6 +7,8 @@ Boot.preload = function() {
 };
 
 Boot.create = function() {
+  this.game.stage.scale.pageAlignHorizontally = true;
+  this.game.stage.scale.pageAlignVeritcally = true;
   this.stage.backgroundColor = '#aaaaaa';
   console.log('Configuring game');
 
