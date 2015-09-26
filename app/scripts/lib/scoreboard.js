@@ -57,8 +57,6 @@ var Scoreboard = (function () {
       }
     });
 
-    req.setRequestHeader('Content-Type', 'application/json');
-    req.setRequestHeader('Content-Length', ''+content.length);
     req.open('POST', url);
     req.send(content);
   }
