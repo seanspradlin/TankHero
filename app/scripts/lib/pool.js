@@ -45,7 +45,7 @@ var Pool = (function() {
       var flip    = i % 2 === 0
         , scale   = flip ? -1 : 1
         , x       = flip ? game.width * -0.5 : game.width * 1.5
-        , y       = 200 + (200 * Math.random())
+        , y       = 50 + (100 * i)
         , bomber  = new Bomber(game, x, y);
       bomber.scale.x = scale;
       container.bombers.add(bomber);

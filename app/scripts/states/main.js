@@ -6,7 +6,7 @@ var States = States || {}
 Main.create = function() {
   // Properties
   this.nextSpawn = 0;
-  this.spawnDelay = 2000;
+  this.spawnDelay = 1500;
   totalKills = 0;
 
   // Bounds
@@ -181,7 +181,7 @@ Main.spawnEnemies = function() {
         var bomber = pool.bombers.getFirstExists(false)
           , flip = bomber.scale.x === -1
           , x = flip ? this.game.width * -0.5 : this.game.width * 1.5
-          , y = 300 * Math.random();
+          , y = bomber.y;
         bomber.reset(x, y);
         this.nextSpawn = this.game.time.time + this.spawnDelay;
       }
