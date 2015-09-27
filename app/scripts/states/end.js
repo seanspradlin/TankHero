@@ -14,10 +14,21 @@ End.create = function() {
   text1.anchor.y = 0.5;
 
   var text2 = this.add.text(this.game.width / 2, (this.game.height /2) + 100,
-              'TOTAL KILLS: ' + totalKills,
+              'SCORE: ' + totalKills,
               {font: '16px Arial', fill: '#ffffff', align: 'center'});
   text2.anchor.x = 0.5;
   text2.anchor.y = 0.5;
+
+  var fill = Scoreboard.isBest(totalKills) ? '#ff0000' : '#ffffff';
+  var text3 = this.add.text(this.game.width / 2, (this.game.height /2) + 200,
+              'PERSONAL BEST: ' + Scoreboard.personalBest(),
+              {font: '16px Arial', fill: fill, align: 'center'});
+  text3.anchor.x = 0.5;
+  text3.anchor.y = 0.5;
+
+  if (Scoreboard.compare(totalKills)) {
+    document.getElementById('record').style.visibility = 'visible';
+  }
 };
 
 End.update = function() {

@@ -7,7 +7,28 @@ var Scoreboard = (function () {
   var scores = [];
   var url = 'https://shielded-meadow-7731.herokuapp.com/';
   var scoreboard;
+  var _personalBest = 0;
 
+  function personalBest() {
+    return _personalBest;
+  }
+
+  /**
+   * Check if value is personal best, stores if true
+   * @param {number} value
+   * @return boolean
+   */
+  function isBest(value) {
+    if (value > _personalBest) {
+      _personalBest = value;
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Replaces the contents of the scoreboard with new values
+   */
   function populate() {
     scoreboard = scoreboard || document.getElementById('scores');
     var html = createHeader();
@@ -15,6 +36,7 @@ var Scoreboard = (function () {
       html += createRow(scores[i]);
     }
     scoreboard.innerHTML = html;
+    document.getElementById('record').style.visibility = 'hidden';
   }
 
   function createHeader() {
@@ -37,6 +59,10 @@ var Scoreboard = (function () {
     return row;
   }
 
+  /**
+   * Gets the current top scores from the api
+   * and populates the scoreboard
+   */
   function get() {
     var req = new XMLHttpRequest();
 
@@ -53,6 +79,12 @@ var Scoreboard = (function () {
     req.send();
   }
 
+  /**
+   * Posts a score to the api
+   * @param {string} name
+   * @param {number} score
+   * @param {function(error, data)} callback
+   */
   function post(name, score, callback) {
     var req = new XMLHttpRequest();
     var content = JSON.stringify({
@@ -73,8 +105,25 @@ var Scoreboard = (function () {
     req.send(content);
   }
 
+  /**
+   * Compares the value to the current high scores
+   * @param {number} value
+   * @returns boolean
+   */
+  function compare(value) {
+    for (var i = 0; i < scores.length; i++) {
+      if (value >= scores[i].score) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   return {
     post: post,
-    get: get
+    get: get,
+    compare: compare,
+    personalBest: personalBest,
+    isBest: isBest
   };
 } ());
