@@ -57,7 +57,7 @@ Main.create = function() {
   pool = Pool(this.game, true);
 
   // Player
-  player = this.add.existing(new Player(this.game, 100, this.game.height - 50));
+  player = this.add.existing(new Player(this.game, 100, this.game.height - 25));
   player.scale.x = -2;
   player.scale.y = 2;
 
