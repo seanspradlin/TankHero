@@ -167,8 +167,10 @@ function objectCollider(object, ammo) {
 
 Main.spawnEnemies = function() {
   if (this.game.time.time < this.nextSpawn) { return; }
-  switch (Math.floor(Math.random() * 3)) {
+  switch (Math.floor(Math.random() * 6)) {
     case 0: // Jeep
+    case 1:
+    case 2:
       if (pool.jeeps.countDead() > 0) {
         pool.jeeps
             .getFirstExists(false)
@@ -176,7 +178,8 @@ Main.spawnEnemies = function() {
         this.nextSpawn = this.game.time.time + this.spawnDelay;
       }
       break;
-    case 1: // Bombers
+    case 3: // Bombers
+    case 4:
       if (pool.bombers.countDead() > 0) {
         var bomber = pool.bombers.getFirstExists(false)
           , flip = bomber.scale.x === -1
@@ -186,7 +189,7 @@ Main.spawnEnemies = function() {
         this.nextSpawn = this.game.time.time + this.spawnDelay;
       }
       break;
-    case 2: // Panthers
+    case 5: // Panthers
       if (pool.panthers.countDead() > 0) {
         var panther = pool.panthers.getFirstExists(false);
         panther.reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom, 6);
