@@ -17,6 +17,7 @@ function Jeep(game, moveSpeed, firingDelay) {
   // Physics
   this.game.physics.enable(this);
   this.body.collideWorldBounds = true;
+  this.body.setSize(80, 65);
 
   // Animations
   var drivingFrames = Phaser.Animation.generateFrameNames('jeep/body', 6, 1);
