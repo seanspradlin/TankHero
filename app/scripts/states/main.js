@@ -1,8 +1,7 @@
 'use strict';
 var States = States || {}
   , Main   = new Phaser.State()
-  , ground, fog1, fog2
-  , player, pool, totalKills;
+  , ground, player, pool, totalKills;
 
 Main.create = function() {
   // Properties
@@ -35,9 +34,9 @@ Main.create = function() {
   trees2.anchor.y = 1.0;
 
   // Fog 1
-  fog1 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust1');
-  fog1.anchor.y = 1.0;
-  fog1.alpha = 0.5;
+  this.fog1 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust1');
+  this.fog1.anchor.y = 1.0;
+  this.fog1.alpha = 0.5;
 
   // Ground
   ground = this.add.sprite(0, this.game.height, 'environment', 'ground');
@@ -50,9 +49,9 @@ Main.create = function() {
   ground.body.setSize(this.game.width, ground.height);
 
   // Fog 2
-  fog2 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust2');
-  fog2.anchor.y = 1.0;
-  fog2.alpha = 0.5;
+  this.fog2 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust2');
+  this.fog2.anchor.y = 1.0;
+  this.fog2.alpha = 0.5;
 
   // Pool
   pool = Pool(this.game, true);
@@ -70,14 +69,14 @@ Main.create = function() {
 
 Main.update = function() {
   this.healthCounter.text = 'Health: ' + player.health;
-  this.killCounter.text = 'Kills: ' + totalKills;
+  this.killCounter.text = 'Score: ' + totalKills;
 
   if (player.health === 0) {
     this.state.start('End');
   }
 
-  fog1.x -= 0.5;
-  fog2.x -= 1;
+  this.fog1.x -= 0.5;
+  this.fog2.x -= 1;
 
   this.spawnEnemies();
 
