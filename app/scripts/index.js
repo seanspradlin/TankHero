@@ -9,4 +9,6 @@ window.onload = function() {
   game.state.add('End', States.End);
 
   game.state.start('Boot');
+
+  Scoreboard.get();
 };
