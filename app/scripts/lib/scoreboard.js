@@ -36,7 +36,6 @@ var Scoreboard = (function () {
       html += createRow(scores[i]);
     }
     scoreboard.innerHTML = html;
-    document.getElementById('record').style.visibility = 'hidden';
   }
 
   function createHeader() {
@@ -85,7 +84,7 @@ var Scoreboard = (function () {
    * @param {number} score
    * @param {function(error, data)} callback
    */
-  function post(name, score, callback) {
+  function post(name, score) {
     var req = new XMLHttpRequest();
     var content = JSON.stringify({
       name: name,

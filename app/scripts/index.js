@@ -12,4 +12,11 @@ window.onload = function() {
 
   Scoreboard.get();
   document.getElementById('record').style.visibility = 'hidden';
+  document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var name  = document.getElementById('name').value
+      , score = totalKills || 0;
+    Scoreboard.post(name, score);
+    document.getElementById('record').style.visibility = 'hidden';
+  }, true);
 };
