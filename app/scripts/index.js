@@ -11,4 +11,5 @@ window.onload = function() {
   game.state.start('Boot');
 
   Scoreboard.get();
+  document.getElementById('record').style.visibility = 'hidden';
 };
