@@ -6,9 +6,9 @@ Bomber.prototype.constructor = Bomber;
 function Bomber(game, x, y) {
 
   // Properties
-  this.firingDelay = 3000;
+  this.firingDelay = 100;
   this.nextFire = 0;
-  this.moveSpeed = 45;
+  this.moveSpeed = 450;
 
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'bomber/body');
@@ -39,6 +39,7 @@ Bomber.prototype.forward = function () {
 
 Bomber.prototype.attack = function () {
   if (this.game.time.time < this.nextFire) { return; }
+  if (this.x > player.x + 50 || this.x < player.x - 50) { return; }
   var pool  = Pool(this.game);
   if (pool.bombs.countDead() === 0) { return; }
   var bomb  = pool.bombs.getFirstExists(false)
