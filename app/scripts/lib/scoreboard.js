@@ -91,17 +91,9 @@ var Scoreboard = (function () {
       score: score
     });
 
-    req.addEventListener('load', function () {
-      try {
-        scores = JSON.parse(this.responseText);
-        populate();
-      } catch (error) {
-        console.error(error);
-      }
-    });
-
     req.open('POST', url);
     req.send(content);
+    get(); // TODO: return scores with post
   }
 
   /**
