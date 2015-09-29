@@ -47,6 +47,10 @@ function Panther(game, moveSpeed, firingDelay, rangeFromPlayer) {
 
   this.exists = false;
   this.alive = false;
+
+  this.events.onKilled.add(function() {
+    Pool(this.game, false).pantherExplosions.getFirstExists(false).bang(this.x, this.y);
+  }, this);
 }
 
 Panther.prototype.forward = function () {
@@ -66,7 +70,7 @@ Panther.prototype.halt = function() {
 
 Panther.prototype.attack = function () {
   if (this.game.time.time < this.nextFire) { return; }
-  var pool = Pool(this.game);
+  var pool = Pool(this.game, false);
   if (pool.pantherShells.countDead() === 0) { return; }
 
   var shell = pool.pantherShells.getFirstExists(false)

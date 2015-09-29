@@ -19,6 +19,6 @@ function Bomb(game) {
   this.checkWorldBounds = true;
 
   this.events.onKilled.add(function() {
-    Pool(game).bombExplosions.getFirstExists(false).bang(this.x, this.y - 4);
+    Pool(game, false).bombExplosions.getFirstExists(false).bang(this.x, this.y - 4);
   }, this);
 }

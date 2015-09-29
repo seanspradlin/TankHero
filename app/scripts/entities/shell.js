@@ -17,6 +17,6 @@ function Shell(game, key) {
 
 
   this.events.onKilled.add(function() {
-    // play explosion
+    Pool(game, false).blasts.getFirstExists(false).bang(this.x, this.y);
   }, this);
 }

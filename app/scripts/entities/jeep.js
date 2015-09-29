@@ -45,6 +45,10 @@ function Jeep(game, moveSpeed, firingDelay) {
 
   this.exists = false;
   this.alive = false;
+
+  this.events.onKilled.add(function() {
+    Pool(this.game, false).jeepExplosions.getFirstExists(false).bang(this.x, this.y);
+  }, this);
 }
 
 Jeep.prototype.forward = function () {
@@ -55,7 +59,7 @@ Jeep.prototype.forward = function () {
 
 Jeep.prototype.attack = function() {
   if (this.game.time.time < this.nextFire) { return ; }
-  var pool = Pool(this.game);
+  var pool = Pool(this.game, false);
   if (pool.grenades.countDead() === 0) { return; }
   var grenade = pool.grenades.getFirstExists(false)
     , angle = 220
