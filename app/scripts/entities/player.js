@@ -45,7 +45,7 @@ function Player(game, x, y) {
   // Shells
   this.shells = new Phaser.Group(this.game, this.game.world, 'Player Shells', false, true, Phaser.Physics.ARCADE);
   for (var i = 0; i < 5; i++) {
-    this.shells.add(new Shell(this.game, 'player/shell'), true);
+    this.shells.add(new Shell(this.game, 'player/shell', false), true);
   }
 }
 
@@ -74,6 +74,7 @@ Player.prototype.attack = function () {
     , y = this.cannon.world.y + (this.cannon.rotation * this.cannon.width);
 
   this.cannon.animations.play('firing');
+  this.game.sound.play('fire');
   this.nextFire = this.game.time.time + this.firingDelay;
   shell.reset(x, y);
   this.game.physics.arcade.velocityFromAngle(angle, this.shellSpeed, shell.body.velocity);

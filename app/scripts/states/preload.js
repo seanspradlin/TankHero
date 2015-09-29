@@ -14,6 +14,7 @@ Preload.preload = function() {
     'assets/images/sprites.png',
     'assets/images/sprites.json'
   );
+  this.load.audio('fire', 'assets/sounds/fire.wav');
 };
 
 Preload.create = function() {
