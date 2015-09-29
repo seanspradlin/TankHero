@@ -30,7 +30,9 @@ var Pool = (function() {
     container.pantherExplosions = new Phaser.Group(game, game.world, 'Panther Explosions', false);
     var pantherExplosionFrames = Phaser.Animation.generateFrameNames('panther/death', 1, 10);
     for (var i = 0; i < 1; i++) {
-      var explosion = new Explosion(game, pantherExplosionFrames, 15);
+      var explosion = new Explosion(game, pantherExplosionFrames, 12);
+      explosion.scale.x = 2.0;
+      explosion.scale.y = 2.0;
       explosion.anchor.x = 0.5;
       explosion.anchor.y = 1.0;
       container.pantherExplosions.add(explosion);
@@ -51,6 +53,8 @@ var Pool = (function() {
     var jeepExplosionFrames = Phaser.Animation.generateFrameNames('jeep/death', 1, 9);
     for (var i = 0; i < 12; i++) {
       var explosion = new Explosion(game, jeepExplosionFrames, 15);
+      explosion.scale.x = 2.0;
+      explosion.scale.y = 2.0;
       explosion.anchor.x = 0.5;
       explosion.anchor.y = 1.0;
       container.jeepExplosions.add(explosion);
@@ -65,20 +69,20 @@ var Pool = (function() {
     // Grenades
     container.grenades = new Phaser.Group(game, game.world, 'Grenades', false, true, Phaser.Physics.ARCADE);
     for (var i = 0; i < 20; i++) {
-      container.grenades.add(new Shell(game, 'jeep/grenade'), true);
+      container.grenades.add(new Shell(game, 'jeep/grenade', true), true);
     }
 
     // Panther Shells
     container.pantherShells = new Phaser.Group(game, game.world, 'Panther Shells', false, true, Phaser.Physics.ARCADE);
     for (var i = 0; i < 10; i++) {
-      container.pantherShells.add(new Shell(game, 'player/shell'), true);
+      container.pantherShells.add(new Shell(game, 'player/shell', false), true);
     }
 
     // Bomb Explosions
     container.bombExplosions = new Phaser.Group(game, game.world, 'Bomb Explosions', false, false);
     var explosionFrames = Phaser.Animation.generateFrameNames('explosion/', 1, 4);
     for (var i = 0; i < 10; i++) {
-      var explosion = new Explosion(game, explosionFrames, 15);
+      var explosion = new Explosion(game, explosionFrames, 10);
       explosion.anchor.x = 0.5;
       explosion.anchor.y = 1.0;
       container.bombExplosions.add(explosion);
@@ -88,7 +92,7 @@ var Pool = (function() {
     container.blasts = new Phaser.Group(game, game.world, 'Blasts', false, false);
     var blastFrames = Phaser.Animation.generateFrameNames('blast/', 1, 8);
     for (var i = 0; i < 20; i++) {
-      container.blasts.add(new Explosion(game, blastFrames, 15));
+      container.blasts.add(new Explosion(game, blastFrames, 30));
     }
 
     // Bombers

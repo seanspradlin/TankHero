@@ -2,7 +2,7 @@
 Shell.prototype = Object.create(Phaser.Sprite.prototype);
 Shell.prototype.constructor = Shell;
 
-function Shell(game, key) {
+function Shell(game, key, explode) {
   Phaser.Sprite.call(this, game, 0, 0, 'sprites', key);
   this.texture.baseTexture.scaleMode = PIXI.scaleModes.NEAREST;
   this.anchor.set(0.5);
@@ -15,8 +15,9 @@ function Shell(game, key) {
   this.outOfBoundsKill = true;
   this.checkWorldBounds = true;
 
-
-  this.events.onKilled.add(function() {
-    Pool(game, false).blasts.getFirstExists(false).bang(this.x, this.y);
-  }, this);
+  if (explode) {
+    this.events.onKilled.add(function() {
+      Pool(game, false).blasts.getFirstExists(false).bang(this.x, this.y);
+    }, this);
+  }
 }
