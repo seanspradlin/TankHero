@@ -49,7 +49,7 @@ function Panther(game, moveSpeed, firingDelay, rangeFromPlayer) {
   this.alive = false;
 
   this.events.onKilled.add(function() {
-    Pool(this.game, false).pantherExplosions.getFirstExists(false).bang(this.x, this.y);
+    Pool(this.game, false).pantherExplosions.getFirstExists(false).bang(this.x - 22, this.y);
   }, this);
 }
 
