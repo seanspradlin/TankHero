@@ -49,6 +49,7 @@ function Panther(game, moveSpeed, firingDelay, rangeFromPlayer) {
   this.alive = false;
 
   this.events.onKilled.add(function() {
+    this.game.sound.play('panther-explosion');
     Pool(this.game, false).pantherExplosions.getFirstExists(false).bang(this.x - 22, this.y);
   }, this);
 }
@@ -80,6 +81,7 @@ Panther.prototype.attack = function () {
   shell.reset(x, y);
   this.game.physics.arcade.velocityFromAngle(-180, 900, shell.body.velocity);
 
+  this.game.sound.play('panther-fire');
   this.cannon.animations.play('firing');
   this.nextFire = this.game.time.time + this.firingDelay;
 };

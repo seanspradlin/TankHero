@@ -15,6 +15,8 @@ Preload.preload = function() {
     'assets/images/sprites.json'
   );
   this.load.audio('fire', 'assets/sounds/fire.wav');
+  this.load.audio('panther-fire', 'assets/sounds/panther-fire.wav');
+  this.load.audio('panther-explosion', 'assets/sounds/panther-explosion.wav');
 };
 
 Preload.create = function() {
