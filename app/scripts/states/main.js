@@ -64,6 +64,7 @@ Main.create = function() {
   this.healthCounter = this.add.text(50, 50, '', {font: '18px Arial', fill: '#ffffff'});
   this.killCounter = this.add.text(50, 75, '', {font: '18px Arial', fill: '#ffffff'});
 
+  this.game.sound.play('game-start');
   console.log('Game has begun');
 };
 

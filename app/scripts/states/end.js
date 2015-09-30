@@ -29,6 +29,8 @@ End.create = function() {
   if (Scoreboard.compare(totalKills)) {
     document.getElementById('record').style.visibility = 'visible';
   }
+
+  this.game.sound.play('game-over');
 };
 
 End.update = function() {
