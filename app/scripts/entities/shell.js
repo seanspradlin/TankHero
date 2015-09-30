@@ -18,6 +18,7 @@ function Shell(game, key, explode) {
   if (explode) {
     this.events.onKilled.add(function() {
       Pool(game, false).blasts.getFirstExists(false).bang(this.x, this.y);
+      game.sound.play('jeep-grenade');
     }, this);
   }
 }

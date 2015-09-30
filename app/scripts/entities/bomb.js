@@ -20,5 +20,6 @@ function Bomb(game) {
 
   this.events.onKilled.add(function() {
     Pool(game, false).bombExplosions.getFirstExists(false).bang(this.x, this.y - 4);
+    game.sound.play('bomb');
   }, this);
 }

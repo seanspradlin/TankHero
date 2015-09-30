@@ -17,6 +17,9 @@ Preload.preload = function() {
   this.load.audio('fire', 'assets/sounds/fire.wav');
   this.load.audio('panther-fire', 'assets/sounds/panther-fire.wav');
   this.load.audio('panther-explosion', 'assets/sounds/panther-explosion.wav');
+  this.load.audio('jeep-grenade', 'assets/sounds/jeep-grenade.wav');
+  this.load.audio('jeep-explosion', 'assets/sounds/jeep-explosion.wav');
+  this.load.audio('bomb', 'assets/sounds/bomb.wav');
 };
 
 Preload.create = function() {
