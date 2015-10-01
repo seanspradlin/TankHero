@@ -143,7 +143,7 @@ Main.update = function() {
     jeep.forward();
     jeep.attack();
     if (jeep.x < -100) {
-      jeep.kill();
+      jeep.exists = false;
     }
   });
 
