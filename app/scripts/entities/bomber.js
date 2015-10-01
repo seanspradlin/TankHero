@@ -9,6 +9,7 @@ function Bomber(game, x, y) {
   this.firingDelay = 100;
   this.nextFire = 0;
   this.moveSpeed = 450;
+  // this.propellerSound = game.sound.play('propeller', 0.1, true);
 
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'bomber/body');
@@ -30,6 +31,14 @@ function Bomber(game, x, y) {
 
   this.exists = false;
   this.alive = false;
+
+  // this.events.onEnterBounds.add(function() {
+  //   this.propellerSound.play();
+  // }, this);
+
+  // this.events.onOutOfBounds.add(function() {
+  //   this.propellerSound.stop();
+  // }, this);
 }
 
 Bomber.prototype.forward = function () {
