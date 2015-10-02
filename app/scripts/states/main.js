@@ -105,8 +105,6 @@ Main.create = function() {
 };
 
 Main.update = function() {
-  console.log('playing: ' + this.backgroundMusic.isPlaying);
-  console.log('volume: ' + this.backgroundMusic.volume);
   if (this.backgroundMusic.isPlaying) {
     if (this.backgroundMusic.volume < 1.0) {
       this.backgroundMusic.volume += 0.001;
