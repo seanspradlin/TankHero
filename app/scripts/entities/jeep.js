@@ -48,7 +48,7 @@ function Jeep(game, moveSpeed, firingDelay) {
 
   this.events.onKilled.add(function() {
     Pool(this.game, false).jeepExplosions.getFirstExists(false).bang(this.x - 16, this.y + 1);
-    this.game.sound.play('jeep-explosion');
+    this.game.sound.play('jeep-explosion', 0.3);
   }, this);
 }
 
