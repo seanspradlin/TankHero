@@ -15,7 +15,7 @@ function Player(game, x, y) {
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'player/body1');
 
   // Player Death Animation
-  var playerDeathframes = Phaser.Animation.generateFrameNames('player/death', 1, 20);
+  var playerDeathframes = Phaser.Animation.generateFrameNames('player/death', 2, 20);
   this.playerDeath = new Phaser.Sprite(game, 0, 0, 'sprites', 'player/death1');
   this.playerDeath.animations.add('boom', playerDeathframes, 10, false, false);
   this.playerDeath.scale.x = -1.5;
