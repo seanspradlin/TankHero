@@ -1,15 +1,13 @@
 'use strict';
 var States  = States || {}
-  , Menu    = new Phaser.State()
-  , input;
+  , Menu    = new Phaser.State();
 
 Menu.create = function() {
   this.stage.backgroundColor = '#333333';
 
   // Input
-  input = this.input.keyboard.createCursorKeys();
-  input.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
+  this.keyboard = this.input.keyboard.createCursorKeys();
+  this.keyboard.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   var text1 = this.add.text(512, 334,
               'Arrow Keys to Move, Spacebar to Shoot',
@@ -27,7 +25,7 @@ Menu.create = function() {
 };
 
 Menu.update = function() {
-  if (input.attack.isDown) {
+  if (this.keyboard.attack.isDown) {
     console.log('Starting game');
     this.state.start('Main');
   }

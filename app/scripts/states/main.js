@@ -1,13 +1,16 @@
 'use strict';
 var States = States || {}
-  , Main   = new Phaser.State()
-  , ground, player, pool, totalKills;
+  , Main   = new Phaser.State();
 
 Main.create = function() {
   // Properties
   this.nextSpawn = 0;
   this.spawnDelay = 1500;
-  totalKills = 0;
+  this.totalKills = 0;
+
+  // Input
+  this.keyboard = this.input.keyboard.createCursorKeys();
+  this.keyboard.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
   // Bounds
   var boundsX       = this.game.width * -0.5
@@ -39,14 +42,14 @@ Main.create = function() {
   this.fog1.alpha = 0.5;
 
   // Ground
-  ground = this.add.sprite(0, this.game.height, 'environment', 'ground');
-  ground.width = this.game.width;
-  ground.height = 25;
-  ground.anchor.y = 1.0;
-  this.game.physics.enable(ground);
-  ground.body.immovable = true;
-  ground.body.allowGravity = false;
-  ground.body.setSize(this.game.width, ground.height);
+  this.ground = this.add.sprite(0, this.game.height, 'environment', 'ground');
+  this.ground.width = this.game.width;
+  this.ground.height = 25;
+  this.ground.anchor.y = 1.0;
+  this.game.physics.enable(this.ground);
+  this.ground.body.immovable = true;
+  this.ground.body.allowGravity = false;
+  this.ground.body.setSize(this.game.width, this.ground.height);
 
   // Fog 2
   this.fog2 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust2');
@@ -54,12 +57,12 @@ Main.create = function() {
   this.fog2.alpha = 0.5;
 
   // Pool
-  pool = Pool(this.game, true);
+  this.pool = Pool(this.game, true);
 
   // Player
-  player = this.add.existing(new Player(this.game, 100, this.game.height - 25));
-  player.scale.x = -2;
-  player.scale.y = 2;
+  this.player = this.add.existing(new Player(this.game, 100, this.game.height - 25));
+  this.player.scale.x = -2;
+  this.player.scale.y = 2;
 
   this.healthCounter = this.add.text(50, 50, '', {font: '18px Arial', fill: '#ffffff'});
   this.killCounter = this.add.text(50, 75, '', {font: '18px Arial', fill: '#ffffff'});
@@ -69,11 +72,11 @@ Main.create = function() {
 };
 
 Main.update = function() {
-  this.healthCounter.text = 'Health: ' + player.health;
-  this.killCounter.text = 'Score: ' + totalKills;
+  this.healthCounter.text = 'Health: ' + this.player.health;
+  this.killCounter.text = 'Score: ' + this.totalKills;
 
-  if (player.health === 0) {
-    this.state.start('End');
+  if (this.player.health === 0) {
+    this.state.start('End', true, false, this.totalKills);
   }
 
   this.fog1.x -= 0.5;
@@ -82,49 +85,49 @@ Main.update = function() {
   this.spawnEnemies();
 
   // Move left/right
-  if (input.left.isDown) {
-    player.reverse();
-  } else if (input.right.isDown) {
-    player.forward();
+  if (this.keyboard.left.isDown) {
+    this.player.reverse();
+  } else if (this.keyboard.right.isDown) {
+    this.player.forward();
   } else {
-    player.halt();
+    this.player.halt();
   }
 
   // Aim up/down
-  if (input.up.isDown && player.cannon.angle <= 25) {
-    player.cannon.angle++;
-  } else if (input.down.isDown && player.cannon.angle >= -5) {
-    player.cannon.angle--;
+  if (this.keyboard.up.isDown && this.player.cannon.angle <= 25) {
+    this.player.cannon.angle++;
+  } else if (this.keyboard.down.isDown && this.player.cannon.angle >= -5) {
+    this.player.cannon.angle--;
   }
 
   // Attack
-  if (input.attack.isDown) {
-    player.attack();
+  if (this.keyboard.attack.isDown) {
+    this.player.attack();
   }
 
   // Kill on collision
-  this.game.physics.arcade.collide(ground, player.shells, groundCollider);
-  this.game.physics.arcade.collide(ground, pool.bombs, groundCollider);
-  this.game.physics.arcade.collide(ground, pool.grenades, groundCollider);
-  this.game.physics.arcade.collide(ground, pool.pantherShells, groundCollider);
+  this.physics.arcade.collide(this.ground, this.player.shells, this.groundCollider);
+  this.physics.arcade.collide(this.ground, this.pool.bombs, this.groundCollider);
+  this.physics.arcade.collide(this.ground, this.pool.grenades, this.groundCollider);
+  this.physics.arcade.collide(this.ground, this.pool.pantherShells, this.groundCollider);
 
-  // Damage player
-  this.game.physics.arcade.collide(player, pool.bombs, objectCollider);
-  this.game.physics.arcade.collide(player, pool.grenades, objectCollider);
-  this.game.physics.arcade.collide(player, pool.pantherShells, objectCollider);
+  // Damage this.player
+  this.physics.arcade.collide(this.player, this.pool.bombs, this.objectCollider);
+  this.physics.arcade.collide(this.player, this.pool.grenades, this.objectCollider);
+  this.physics.arcade.collide(this.player, this.pool.pantherShells, this.objectCollider);
 
   // Damage enemies
-  this.game.physics.arcade.collide(pool.panthers, player.shells, objectCollider);
-  this.game.physics.arcade.collide(pool.jeeps, player.shells, objectCollider);
+  this.physics.arcade.collide(this.pool.panthers, this.player.shells, this.objectCollider);
+  this.physics.arcade.collide(this.pool.jeeps, this.player.shells, this.objectCollider);
 
   // Update existing enemies
-  pool.bombers.forEachExists(function(bomber) {
+  this.pool.bombers.forEachExists(function(bomber) {
     bomber.forward();
     bomber.attack();
   }, this);
 
-  pool.panthers.forEachExists(function(panther) {
-    var distance    = Main.physics.arcade.distanceBetween(panther, player)
+  this.pool.panthers.forEachExists(function(panther) {
+    var distance    = Main.physics.arcade.distanceBetween(panther, this.player)
       , minDistance = panther.rangeFromPlayer - 50
       , maxDistance = panther.rangeFromPlayer + 50;
 
@@ -139,7 +142,7 @@ Main.update = function() {
     panther.attack();
   }, this);
 
-  pool.jeeps.forEachExists(function(jeep) {
+  this.pool.jeeps.forEachExists(function(jeep) {
     jeep.forward();
     jeep.attack();
     if (jeep.x < -100) {
@@ -148,23 +151,23 @@ Main.update = function() {
   });
 
   // Make grenades spin
-  pool.grenades.forEachExists(function(grenade) {
+  this.pool.grenades.forEachExists(function(grenade) {
     grenade.body.angularVelocity = -300;
   });
 };
 
-function groundCollider(ground, obj) {
+Main.groundCollider = function(ground, obj) {
   obj.kill();
-}
+};
 
-function objectCollider(object, ammo) {
+Main.objectCollider = function(object, ammo) {
   object.health--;
   if (object.health <= 0) {
     object.kill();
-    totalKills += object.scoreValue || 1;
+    Main.totalKills += object.scoreValue || 1;
   }
   ammo.kill();
-}
+};
 
 Main.spawnEnemies = function() {
   if (this.game.time.time < this.nextSpawn) { return; }
@@ -172,8 +175,8 @@ Main.spawnEnemies = function() {
     case 0: // Jeep
     case 1:
     case 2:
-      if (pool.jeeps.countDead() > 0) {
-        pool.jeeps
+      if (this.pool.jeeps.countDead() > 0) {
+        this.pool.jeeps
             .getFirstExists(false)
             .reset(this.world.bounds.right, this.physics.arcade.bounds.bottom);
         this.nextSpawn = this.game.time.time + this.spawnDelay;
@@ -181,8 +184,8 @@ Main.spawnEnemies = function() {
       break;
     case 3: // Bombers
     case 4:
-      if (pool.bombers.countDead() > 0) {
-        var bomber = pool.bombers.getFirstExists(false)
+      if (this.pool.bombers.countDead() > 0) {
+        var bomber = this.pool.bombers.getFirstExists(false)
           , flip = bomber.scale.x === -1
           , x = flip ? this.game.width * -0.5 : this.game.width * 1.5
           , y = bomber.y;
@@ -191,8 +194,8 @@ Main.spawnEnemies = function() {
       }
       break;
     case 5: // Panthers
-      if (pool.panthers.countDead() > 0) {
-        var panther = pool.panthers.getFirstExists(false);
+      if (this.pool.panthers.countDead() > 0) {
+        var panther = this.pool.panthers.getFirstExists(false);
         panther.reset(this.game.width * 1.25, this.physics.arcade.bounds.bottom, 6);
         this.nextSpawn = this.game.time.time + this.spawnDelay;
       }

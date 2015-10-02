@@ -15,7 +15,7 @@ window.onload = function() {
   document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault();
     var name  = document.getElementById('name').value
-      , score = totalKills || 0;
+      , score = End.finalScore || 0;
     Scoreboard.post(name, score);
     document.getElementById('record').style.visibility = 'hidden';
   }, true);
