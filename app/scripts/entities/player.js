@@ -15,8 +15,13 @@ function Player(game, x, y) {
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'player/body1');
 
   // Player Death Animation
-  var playerDeathframes = Phaser.Animation.generateFrameNames('player/death', 2, 20);
+  var playerDeathframes = Phaser.Animation.generateFrameNames('player/death', 2, 20),
+      extendedFrames = [ 'player/death19', 'player/death18', 'player/death19', 'player/death20' ];
   this.playerDeath = new Phaser.Sprite(game, 0, 0, 'sprites', 'player/death1');
+  // hack to loop the last 3 frames
+  playerDeathframes = playerDeathframes.concat(extendedFrames).concat(extendedFrames)
+                                       .concat(extendedFrames).concat(extendedFrames)
+                                       .concat(extendedFrames).concat(extendedFrames);
   this.playerDeath.animations.add('boom', playerDeathframes, 10, false, false);
   this.playerDeath.scale.x = -1.5;
   this.playerDeath.scale.y = 1.5;
