@@ -119,10 +119,6 @@ Main.update = function() {
   this.healthCounter.text = 'Health: ' + this.player.health;
   this.killCounter.text = 'Score: ' + this.totalKills;
 
-  if (this.player.health === 0) {
-    this.state.start('End', true, false, this.totalKills);
-  }
-
   this.fog1.x -= 0.5;
   this.fog2.x -= 1;
 

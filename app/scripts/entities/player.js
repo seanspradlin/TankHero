@@ -14,6 +14,22 @@ function Player(game, x, y) {
   // Call base constructor
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'player/body1');
 
+  // Player Death Animation
+  var playerDeathframes = Phaser.Animation.generateFrameNames('player/death', 1, 20);
+  this.playerDeath = new Phaser.Sprite(game, 0, 0, 'sprites', 'player/death1');
+  this.playerDeath.animations.add('boom', playerDeathframes, 10, false, false);
+  this.playerDeath.scale.x = -1.5;
+  this.playerDeath.scale.y = 1.5;
+  this.playerDeath.anchor.x = 0.5;
+  this.playerDeath.anchor.y = 1.0;
+  this.playerDeath.exists = false;
+  this.playerDeath.events.onAnimationComplete.add(function () {
+    console.log('animation over');
+    this.playerDeath.kill();
+    game.state.start('End', true, false, Main.totalKills);
+  }, this);
+  Main.add.existing(this.playerDeath);
+
   // Animations
   var forwardFrames = Phaser.Animation.generateFrameNames('player/body', 1, 6);
   this.animations.add('forward', forwardFrames, 12, true, false);
@@ -47,6 +63,13 @@ function Player(game, x, y) {
   for (var i = 0; i < 5; i++) {
     this.shells.add(new Shell(this.game, 'player/shell', false), true);
   }
+
+  this.events.onKilled.add(function() {
+    console.log('Player killed');
+    game.sound.play('panther-explosion');
+    this.playerDeath.reset(this.x - 36, this.y);
+    this.playerDeath.animations.play('boom');
+  }, this);
 }
 
 Player.prototype.forward = function () {
