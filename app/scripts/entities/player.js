@@ -24,7 +24,6 @@ function Player(game, x, y) {
   this.playerDeath.anchor.y = 1.0;
   this.playerDeath.exists = false;
   this.playerDeath.events.onAnimationComplete.add(function () {
-    console.log('animation over');
     this.playerDeath.kill();
     game.state.start('End', true, false, Main.totalKills);
   }, this);
