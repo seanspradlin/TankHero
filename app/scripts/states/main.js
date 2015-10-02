@@ -8,6 +8,10 @@ Main.create = function() {
   this.spawnDelay = 1500;
   this.totalKills = 0;
 
+  // Sounds
+  this.startMusic = this.sound.add('game-start', 1.0, false);
+  this.backgroundMusic = this.sound.add('background-music', 0, true);
+
   // Input
   this.keyboard = this.input.keyboard.createCursorKeys();
   this.keyboard.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -67,11 +71,21 @@ Main.create = function() {
   this.healthCounter = this.add.text(50, 50, '', {font: '18px Arial', fill: '#ffffff'});
   this.killCounter = this.add.text(50, 75, '', {font: '18px Arial', fill: '#ffffff'});
 
-  this.game.sound.play('game-start');
+  this.startMusic.play();
+  this.startMusic.onStop.add(function() {
+    Main.backgroundMusic.play('', 0, 0.05);
+  });
+
   console.log('Game has begun');
 };
 
 Main.update = function() {
+  console.log('playing: ' + this.backgroundMusic.isPlaying);
+  console.log('volume: ' + this.backgroundMusic.volume);
+  if (this.backgroundMusic.isPlaying && this.backgroundMusic.volume < 1.0) {
+    this.backgroundMusic.volume += 0.001;
+  }
+
   this.healthCounter.text = 'Health: ' + this.player.health;
   this.killCounter.text = 'Score: ' + this.totalKills;
 
@@ -81,8 +95,6 @@ Main.update = function() {
 
   this.fog1.x -= 0.5;
   this.fog2.x -= 1;
-
-  this.spawnEnemies();
 
   // Move left/right
   if (this.keyboard.left.isDown) {
@@ -121,39 +133,43 @@ Main.update = function() {
   this.physics.arcade.collide(this.pool.jeeps, this.player.shells, this.objectCollider);
 
   // Update existing enemies
-  this.pool.bombers.forEachExists(function(bomber) {
-    bomber.forward();
-    bomber.attack();
-  }, this);
+  if (this.backgroundMusic.isPlaying) {
+    this.spawnEnemies();
+    
+    this.pool.bombers.forEachExists(function(bomber) {
+      bomber.forward();
+      bomber.attack();
+    }, this);
 
-  this.pool.panthers.forEachExists(function(panther) {
-    var distance    = Main.physics.arcade.distanceBetween(panther, this.player)
-      , minDistance = panther.rangeFromPlayer - 50
-      , maxDistance = panther.rangeFromPlayer + 50;
+    this.pool.panthers.forEachExists(function(panther) {
+      var distance    = Main.physics.arcade.distanceBetween(panther, this.player)
+        , minDistance = panther.rangeFromPlayer - 50
+        , maxDistance = panther.rangeFromPlayer + 50;
 
-    if (distance > maxDistance) {
-      panther.forward();
-    } else if (distance < minDistance) {
-      panther.reverse();
-    } else {
-      panther.halt();
-    }
+      if (distance > maxDistance) {
+        panther.forward();
+      } else if (distance < minDistance) {
+        panther.reverse();
+      } else {
+        panther.halt();
+      }
 
-    panther.attack();
-  }, this);
+      panther.attack();
+    }, this);
 
-  this.pool.jeeps.forEachExists(function(jeep) {
-    jeep.forward();
-    jeep.attack();
-    if (jeep.x < -100) {
-      jeep.exists = false;
-    }
-  });
+    this.pool.jeeps.forEachExists(function(jeep) {
+      jeep.forward();
+      jeep.attack();
+      if (jeep.x < -100) {
+        jeep.exists = false;
+      }
+    });
 
-  // Make grenades spin
-  this.pool.grenades.forEachExists(function(grenade) {
-    grenade.body.angularVelocity = -300;
-  });
+    // Make grenades spin
+    this.pool.grenades.forEachExists(function(grenade) {
+      grenade.body.angularVelocity = -300;
+    });
+  }
 };
 
 Main.groundCollider = function(ground, obj) {
@@ -200,6 +216,10 @@ Main.spawnEnemies = function() {
         this.nextSpawn = this.game.time.time + this.spawnDelay;
       }
   }
+};
+
+Main.shutdown = function() {
+  this.sound.stopAll();
 };
 
 States.Main = Main;

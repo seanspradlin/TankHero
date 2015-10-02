@@ -20,10 +20,9 @@ Preload.preload = function() {
   this.load.audio('jeep-grenade', 'assets/sounds/jeep-grenade.ogg');
   this.load.audio('jeep-explosion', 'assets/sounds/jeep-explosion.ogg');
   this.load.audio('bomb', 'assets/sounds/bomb.ogg');
-  // this.load.audio('propeller', 'assets/sounds/propeller.ogg');
   this.load.audio('game-start', 'assets/sounds/game-start.ogg');
   this.load.audio('game-over', 'assets/sounds/game-over.ogg');
-  this.load.audio('background', 'assets/sounds/background.ogg');
+  this.load.audio('background-music', 'assets/sounds/background.ogg');
 };
 
 Preload.create = function() {
