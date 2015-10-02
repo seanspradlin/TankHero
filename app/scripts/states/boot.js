@@ -4,6 +4,11 @@ var States  = States || {}
 
 Boot.preload = function() {
   console.log('Load booting assets');
+  this.load.atlasJSONHash(
+    'fullscreen',
+    'assets/images/fullscreens.png',
+    'assets/images/fullscreens.json'
+  );
 };
 
 Boot.create = function() {
@@ -11,6 +16,10 @@ Boot.create = function() {
   this.game.stage.scale.pageAlignVeritcally = true;
   this.stage.backgroundColor = '#aaaaaa';
   console.log('Configuring game');
+
+  var logo = Boot.add.image(Boot.game.width/2, Boot.game.height/2, 'fullscreen', 'title');
+  logo.anchor.x = 0.5;
+  logo.anchor.y = 0.5;
 
   console.log('Boot complete, jump to Preload.');
   this.state.start('Preload');

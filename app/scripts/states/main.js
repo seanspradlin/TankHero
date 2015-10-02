@@ -68,12 +68,37 @@ Main.create = function() {
   this.player.scale.x = -2;
   this.player.scale.y = 2;
 
-  this.healthCounter = this.add.text(50, 50, '', {font: '18px Arial', fill: '#ffffff'});
-  this.killCounter = this.add.text(50, 75, '', {font: '18px Arial', fill: '#ffffff'});
+  // Counters
+  var fontOptions = {
+    font: '28px Arial',
+    fill: '#900',
+    fontWeight: 'bold',
+    stroke: '#ddd',
+    strokeThickness: 3,
+    align: 'center',
+  };
+  this.healthCounter = this.add.text(50, 50, '', fontOptions);
+  this.killCounter = this.add.text(50, 75, '', fontOptions);
+
+  // Instructions
+  this.movementInstructions = this.add.text(512, 300,
+    'Left/Right Arrow to Move', fontOptions);
+  this.movementInstructions.anchor.x = 0.5;
+  this.movementInstructions.anchor.y = 0.5;
+
+  this.aimingInstructions = this.add.text(512, 330,
+    'Up/Down Arrow to Aim', fontOptions);
+  this.aimingInstructions.anchor.x = 0.5;
+  this.aimingInstructions.anchor.y = 0.5;
+
+  this.firingInstructions = this.add.text(512, 360,
+    'Spacebar to Fire', fontOptions);
+  this.firingInstructions.anchor.x = 0.5;
+  this.firingInstructions.anchor.y = 0.5;
 
   this.startMusic.play();
   this.startMusic.onStop.add(function() {
-    Main.backgroundMusic.play('', 0, 0.05);
+    Main.backgroundMusic.play('', 0, 0);
   });
 
   console.log('Game has begun');
@@ -82,8 +107,15 @@ Main.create = function() {
 Main.update = function() {
   console.log('playing: ' + this.backgroundMusic.isPlaying);
   console.log('volume: ' + this.backgroundMusic.volume);
-  if (this.backgroundMusic.isPlaying && this.backgroundMusic.volume < 1.0) {
-    this.backgroundMusic.volume += 0.001;
+  if (this.backgroundMusic.isPlaying) {
+    if (this.backgroundMusic.volume < 1.0) {
+      this.backgroundMusic.volume += 0.001;
+    }
+    if (this.firingInstructions.alpha > 0) {
+      this.firingInstructions.alpha -= 0.005;
+      this.aimingInstructions.alpha -= 0.005;
+      this.movementInstructions.alpha -= 0.005;
+    }
   }
 
   this.healthCounter.text = 'Health: ' + this.player.health;
@@ -135,7 +167,7 @@ Main.update = function() {
   // Update existing enemies
   if (this.backgroundMusic.isPlaying) {
     this.spawnEnemies();
-    
+
     this.pool.bombers.forEachExists(function(bomber) {
       bomber.forward();
       bomber.attack();

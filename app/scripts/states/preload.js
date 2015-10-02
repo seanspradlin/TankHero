@@ -4,6 +4,10 @@ var States  = States || {}
 
 Preload.preload = function() {
   console.log('Loading game assets');
+  var logo = this.add.image(this.game.width/2, this.game.height/2, 'fullscreen', 'title');
+  logo.anchor.x = 0.5;
+  logo.anchor.y = 0.5;
+  
   this.load.atlasJSONHash(
     'environment',
     'assets/images/environment.png',
@@ -26,6 +30,7 @@ Preload.preload = function() {
 };
 
 Preload.create = function() {
+
   console.log('Preload complete, jump to Menu');
   this.state.start('Menu');
 };

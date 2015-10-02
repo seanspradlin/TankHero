@@ -9,26 +9,31 @@ End.init = function(totalKills) {
 End.create = function() {
   console.log('Game Over');
   this.stage.backgroundColor = '#333333';
-  this.restartTime = this.game.time.time + 7000;
+  this.restartTime = this.game.time.time + 15000;
+  Scoreboard.isBest(this.finalScore);
 
-  var text1 = this.add.text(512, 335,
-              'GAME OVER',
-              {font: '32px Arial', fill: '#ffffff', align: 'center'});
+  var logo = Boot.add.image(Boot.game.width/2, Boot.game.height/2, 'fullscreen', 'game-over');
+  logo.anchor.x = 0.5;
+  logo.anchor.y = 0.5;
+
+  var fontOptions = {
+    font: '42px Arial',
+    fill: '#900',
+    fontWeight: 'bold',
+    stroke: '#ddd',
+    strokeThickness: 5,
+    align: 'center',
+  };
+
+  var text1 = this.add.text(512, 460,
+              'SCORE: ' + this.finalScore, fontOptions);
   text1.anchor.x = 0.5;
   text1.anchor.y = 0.5;
 
-  var text2 = this.add.text(this.game.width / 2, (this.game.height /2) + 100,
-              'SCORE: ' + this.finalScore,
-              {font: '16px Arial', fill: '#ffffff', align: 'center'});
+  var text2 = this.add.text(512, 510,
+              'BEST: ' + Scoreboard.personalBest(), fontOptions);
   text2.anchor.x = 0.5;
   text2.anchor.y = 0.5;
-
-  var fill = Scoreboard.isBest(this.finalScore) ? '#ff0000' : '#ffffff';
-  var text3 = this.add.text(this.game.width / 2, (this.game.height /2) + 200,
-              'PERSONAL BEST: ' + Scoreboard.personalBest(),
-              {font: '16px Arial', fill: fill, align: 'center'});
-  text3.anchor.x = 0.5;
-  text3.anchor.y = 0.5;
 
   if (Scoreboard.compare(this.finalScore)) {
     document.getElementById('record').style.visibility = 'visible';
