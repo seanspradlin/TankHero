@@ -2,18 +2,18 @@ body {
   text-align: center;
   padding: 0;
   margin: 0;
-  background-color: #787746;
+  background-color: #333;
   font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
   color: #DDD;
 }
 
 h1 {
-  background-color: #32331D;
+  background-color: #900;
   font-variant: small-caps;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 48px;
   margin-bottom:15px;
-  box-shadow: 0px 5px 5px #222;
+  box-shadow: 0px 5px 5px #111;
 }
 
 h2 {
@@ -23,12 +23,12 @@ h2 {
 
 a:hover {
   text-decoration: none;
-  color: #C03000;
+  color: #900;
 }
 
 a {
   text-decoration: underline;
-  color: #B4AF91;
+  color: #fc0;
 }
 
 div#game {
