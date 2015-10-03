@@ -1,6 +1,6 @@
 'use strict';
 Bomb.prototype = Object.create(Phaser.Sprite.prototype);
-Bomb.prototype.constructor = Shell;
+Bomb.prototype.constructor = Bomb;
 
 function Bomb(game) {
   Phaser.Sprite.call(this, game, 0, 0, 'sprites', 'bomber/bomb');
