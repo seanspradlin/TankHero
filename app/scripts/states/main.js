@@ -2,10 +2,6 @@
 var States = States || {}
   , Main   = new Phaser.State();
 
-Main.preload = function() {
-  this.time.advancedTiming = true;
-};
-
 Main.create = function() {
   var centerX = this.game.width/2
     , centerY = this.game.height/2;
@@ -115,7 +111,6 @@ Main.create = function() {
 };
 
 Main.update = function() {
-  console.log(this.time.fps);
   if (this.backgroundMusic.isPlaying) {
     if (this.backgroundMusic.volume < 1.0) {
       this.backgroundMusic.volume += 0.001;
