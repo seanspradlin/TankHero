@@ -116,6 +116,8 @@ Main.create = function() {
 };
 
 Main.update = function() {
+  this.player.gameOver();
+
   if (this.backgroundMusic.isPlaying) {
     if (this.backgroundMusic.volume < 1.0) {
       this.backgroundMusic.volume += 0.001;
@@ -236,6 +238,7 @@ Main.objectCollider = function(object, ammo) {
 Main.spawnSupplyDrop = function() {
   if (this.totalKills < this.supplyDrop) { return; }
   this.biplane.reset(this.game.width * 1.5, 300);
+  this.biplane.hasPayload = true;
   this.biplane.forward();
   this.supplyDrop += this.supplyDropDelay;
   this.supplyDropDelay += 25;

@@ -29,6 +29,9 @@ Preload.preload = function() {
   this.load.audio('game-start', 'assets/sounds/game-start.ogg');
   this.load.audio('game-over', 'assets/sounds/game-over.ogg');
   this.load.audio('background-music', 'assets/sounds/background.ogg');
+  this.load.audio('fart', 'assets/sounds/fart.ogg');
+  this.load.audio('medkit', 'assets/sounds/medkit.ogg');
+  this.load.audio('groan', 'assets/sounds/groan.ogg');
 };
 
 Preload.create = function() {

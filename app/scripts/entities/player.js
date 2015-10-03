@@ -3,7 +3,6 @@ Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
 function Player(game, x, y) {
-
   // Properties
   this.firingDelay = 750;
   this.nextFire = 0;
@@ -16,23 +15,33 @@ function Player(game, x, y) {
   Phaser.Sprite.call(this, game, x, y, 'sprites', 'player/body1');
 
   // Player Death Animation
-  var playerDeathframes = Phaser.Animation.generateFrameNames('player/death', 2, 20),
-      extendedFrames = [ 'player/death19', 'player/death18', 'player/death19', 'player/death20' ];
+  var deathFrames1 = Phaser.Animation.generateFrameNames('player/death', 2, 6)
+    , deathFrames2 = Phaser.Animation.generateFrameNames('player/death', 7, 20)
+    , deathFrames3 = Phaser.Animation.generateFrameNames('player/death', 19, 20);
   this.playerDeath = new Phaser.Sprite(game, 0, 0, 'sprites', 'player/death1');
-  // hack to loop the last 3 frames
-  playerDeathframes = playerDeathframes.concat(extendedFrames).concat(extendedFrames)
-                                       .concat(extendedFrames).concat(extendedFrames)
-                                       .concat(extendedFrames).concat(extendedFrames);
-  this.playerDeath.animations.add('boom', playerDeathframes, 10, false, false);
+
+  var deathAnim1 = this.playerDeath.animations.add('death1', deathFrames1, 10, false, false);
+  deathAnim1.onComplete.add(function() {
+    game.sound.play('groan');
+    this.playerDeath.play('death2');
+  }, this);
+
+  var deathAnim2 = this.playerDeath.animations.add('death2', deathFrames2, 10, false, false);
+  deathAnim2.onComplete.add(function() {
+    var fart = game.sound.play('fart', 1.5);
+    fart.onStop.add(function() {
+      this.gameOverTime = game.time.time + 2000;
+    }, this);
+    this.playerDeath.play('death3');
+  }, this);
+
+  this.playerDeath.animations.add('death3', deathFrames3, 10, true, false);
+
   this.playerDeath.scale.x = -1.5;
   this.playerDeath.scale.y = 1.5;
   this.playerDeath.anchor.x = 0.5;
   this.playerDeath.anchor.y = 1.0;
   this.playerDeath.exists = false;
-  this.playerDeath.events.onAnimationComplete.add(function () {
-    this.playerDeath.kill();
-    game.state.start('End', true, false, Main.totalKills);
-  }, this);
   Main.add.existing(this.playerDeath);
 
   // Animations
@@ -73,9 +82,16 @@ function Player(game, x, y) {
     console.log('Player killed');
     game.sound.play('panther-explosion');
     this.playerDeath.reset(this.x - 36, this.y);
-    this.playerDeath.animations.play('boom');
+    this.playerDeath.animations.play('death1');
   }, this);
 }
+
+Player.prototype.gameOver = function() {
+  if (this.gameOverTime) {
+    if (this.game.time.time < this.gameOverTime) { return; }
+    this.game.state.start('End', true, false, Main.totalKills);
+  }
+};
 
 Player.prototype.forward = function () {
   this.animations.play('forward');
@@ -95,6 +111,7 @@ Player.prototype.halt = function () {
 Player.prototype.attack = function () {
   if (this.game.time.time < this.nextFire) { return; }
   if (this.shells.countDead() === 0) { return; }
+  if (!this.alive) { return; }
 
   var shell = this.shells.getFirstExists(false)
     , angle = this.cannon.angle * -1
