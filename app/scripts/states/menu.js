@@ -8,6 +8,8 @@ Menu.create = function () {
   var logo = Boot.add.image(Boot.game.width / 2, Boot.game.height / 2, 'fullscreen', 'game-start');
   logo.anchor.x = 0.5;
   logo.anchor.y = 0.5;
+  logo.height = 600;
+  logo.width = 800;
 
   // Input
   this.keyboard = this.input.keyboard.createCursorKeys();
@@ -21,7 +23,7 @@ Menu.create = function () {
     strokeThickness: 5,
     align: 'center',
   };
-  var text = this.add.text(512, 384, 'Press Spacebar to Begin', fontOptions);
+  var text = this.add.text(this.game.width/2, this.game.height/2, 'Press Spacebar to Begin', fontOptions);
   text.anchor.x = 0.5;
   text.anchor.y = 0.5;
 

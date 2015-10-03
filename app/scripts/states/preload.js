@@ -7,6 +7,8 @@ Preload.preload = function() {
   var logo = this.add.image(this.game.width/2, this.game.height/2, 'fullscreen', '8bit');
   logo.anchor.x = 0.5;
   logo.anchor.y = 0.5;
+  logo.height = 600;
+  logo.width = 800;
 
   this.load.atlasJSONHash(
     'environment',

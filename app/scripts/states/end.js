@@ -15,22 +15,26 @@ End.create = function() {
   var logo = Boot.add.image(Boot.game.width/2, Boot.game.height/2, 'fullscreen', 'game-over');
   logo.anchor.x = 0.5;
   logo.anchor.y = 0.5;
+  logo.height = 600;
+  logo.width = 800;
 
-  var fontOptions = {
-    font: '42px Arial',
-    fill: '#900',
-    fontWeight: 'bold',
-    stroke: '#ddd',
-    strokeThickness: 5,
-    align: 'center',
-  };
+  var centerX = this.game.width/2
+    , centerY = this.game.height/2
+    , fontOptions = {
+      font: '30px Arial',
+      fill: '#900',
+      fontWeight: 'bold',
+      stroke: '#ddd',
+      strokeThickness: 5,
+      align: 'center',
+    };
 
-  var text1 = this.add.text(512, 460,
+  var text1 = this.add.text(centerX, centerY + 45,
               'SCORE: ' + this.finalScore, fontOptions);
   text1.anchor.x = 0.5;
   text1.anchor.y = 0.5;
 
-  var text2 = this.add.text(512, 510,
+  var text2 = this.add.text(centerX, centerY + 80,
               'BEST: ' + Scoreboard.personalBest(), fontOptions);
   text2.anchor.x = 0.5;
   text2.anchor.y = 0.5;

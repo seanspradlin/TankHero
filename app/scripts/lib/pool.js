@@ -20,7 +20,7 @@ var Pool = (function() {
     for (var i = 0; i < 1; i++) {
       var moveSpeed       = 80
         , firingDelay     = 3000
-        , rangeFromPlayer = 500
+        , rangeFromPlayer = 350
         , panther         = new Panther(game, moveSpeed, firingDelay, rangeFromPlayer);
 
       container.panthers.add(panther);
@@ -42,7 +42,7 @@ var Pool = (function() {
     container.jeeps = new Phaser.Group(game, game.world, 'Jeeps', false);
     for (var i = 0; i < 12; i++) {
       var moveSpeed   = 250 + Math.random() * 150
-        , firingDelay = 1000 + Math.random() * 1500
+        , firingDelay = 750 + Math.random() * 750
         , jeep        = new Jeep(game, moveSpeed, firingDelay);
 
       container.jeeps.add(jeep);

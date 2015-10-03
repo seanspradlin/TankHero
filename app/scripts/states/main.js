@@ -2,7 +2,14 @@
 var States = States || {}
   , Main   = new Phaser.State();
 
+Main.preload = function() {
+  this.time.advancedTiming = true;
+};
+
 Main.create = function() {
+  var centerX = this.game.width/2
+    , centerY = this.game.height/2;
+
   // Properties
   this.nextSpawn = 0;
   this.spawnDelay = 1500;
@@ -70,7 +77,7 @@ Main.create = function() {
 
   // Counters
   var fontOptions = {
-    font: '28px Arial',
+    font: '24px Arial',
     fill: '#900',
     fontWeight: 'bold',
     stroke: '#ddd',
@@ -78,23 +85,23 @@ Main.create = function() {
     align: 'center',
   };
 
-  this.killCounter = this.add.text(50, 75, '', fontOptions);
+  this.killCounter = this.add.text(50, 50, '', fontOptions);
 
   // Healthbar
   this.healthbar = this.add.existing(new Healthbar(this.game));
 
   // Instructions
-  this.movementInstructions = this.add.text(512, 300,
+  this.movementInstructions = this.add.text(centerX, centerY - 30,
     'Left/Right Arrow to Move', fontOptions);
   this.movementInstructions.anchor.x = 0.5;
   this.movementInstructions.anchor.y = 0.5;
 
-  this.aimingInstructions = this.add.text(512, 330,
+  this.aimingInstructions = this.add.text(centerX, centerY,
     'Up/Down Arrow to Aim', fontOptions);
   this.aimingInstructions.anchor.x = 0.5;
   this.aimingInstructions.anchor.y = 0.5;
 
-  this.firingInstructions = this.add.text(512, 360,
+  this.firingInstructions = this.add.text(centerX, centerY + 30,
     'Spacebar to Fire', fontOptions);
   this.firingInstructions.anchor.x = 0.5;
   this.firingInstructions.anchor.y = 0.5;
@@ -108,6 +115,7 @@ Main.create = function() {
 };
 
 Main.update = function() {
+  console.log(this.time.fps);
   if (this.backgroundMusic.isPlaying) {
     if (this.backgroundMusic.volume < 1.0) {
       this.backgroundMusic.volume += 0.001;
