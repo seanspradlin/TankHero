@@ -178,6 +178,7 @@ Main.update = function() {
   // Supply Crate
   this.physics.arcade.collide(this.player, this.biplane.medkit, function(p, m) {
     m.kill();
+    p.game.sound.play('medkit');
     p.health += 5;
     p.health = p.health > p.maxHealth ? p.maxHealth : p.health;
   });
