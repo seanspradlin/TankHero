@@ -2,7 +2,7 @@
 
 "dust1":
 {
-	"frame": {"x":662,"y":629,"w":453,"h":117},
+	"frame": {"x":661,"y":629,"w":453,"h":117},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":510,"y":267,"w":453,"h":117},
@@ -10,10 +10,10 @@
 },
 "dust2":
 {
-	"frame": {"x":2,"y":629,"w":658,"h":150},
+	"frame": {"x":2,"y":629,"w":657,"h":150},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":250,"w":658,"h":150},
+	"spriteSourceSize": {"x":0,"y":250,"w":657,"h":150},
 	"sourceSize": {"w":1200,"h":400}
 },
 "ground":
@@ -55,6 +55,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1204,"h":820},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:ba335753926540a2a6d64f6d0af02a01:1523bcd0dcb8d411885cf71f90c34484:7abea815e3107eecbafa95ee71efdc50$"
+	"smartupdate": "$TexturePacker:SmartUpdate:44fd8ff7fd23d33e27196c687dbda5d7:30e77c15959df9d76f62817c33f83abb:7abea815e3107eecbafa95ee71efdc50$"
 }
 }

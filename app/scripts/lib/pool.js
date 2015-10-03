@@ -28,7 +28,7 @@ var Pool = (function() {
 
     // Panther Explosions
     container.pantherExplosions = new Phaser.Group(game, game.world, 'Panther Explosions', false);
-    var pantherExplosionFrames = Phaser.Animation.generateFrameNames('panther/death', 1, 10);
+    var pantherExplosionFrames = Phaser.Animation.generateFrameNames('panther/death', 1, 14);
     for (var i = 0; i < 1; i++) {
       var explosion = new Explosion(game, pantherExplosionFrames, 12);
       explosion.scale.x = 2.0;
@@ -80,9 +80,11 @@ var Pool = (function() {
 
     // Bomb Explosions
     container.bombExplosions = new Phaser.Group(game, game.world, 'Bomb Explosions', false, false);
-    var explosionFrames = Phaser.Animation.generateFrameNames('explosion/', 1, 4);
+    var explosionFrames = Phaser.Animation.generateFrameNames('explosion/', 1, 8);
     for (var i = 0; i < 10; i++) {
-      var explosion = new Explosion(game, explosionFrames, 10);
+      var explosion = new Explosion(game, explosionFrames, 13);
+      explosion.scale.x = 3.0;
+      explosion.scale.y = 3.0;
       explosion.anchor.x = 0.5;
       explosion.anchor.y = 1.0;
       container.bombExplosions.add(explosion);
