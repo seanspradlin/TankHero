@@ -4,9 +4,9 @@ Biplane.prototype = Object.create(Phaser.Sprite.prototype);
 Biplane.prototype.constructor = Biplane;
 
 function Biplane(game) {
-  this.dropDelay = 1000;
   this.nextDrop = 0;
   this.moveSpeed = 150;
+  this.hasPayload = true;
 
   Phaser.Sprite.call(this, game, 0, 0, 'sprites', 'biplane/body');
 
@@ -37,7 +37,8 @@ Biplane.prototype.drop = function() {
   if (this.game.time.time < this.nextDrop) { return; }
   if (this.x > Main.player.x + 100 || this.x < Main.player.x - 100) { return; }
 
-  if (!this.medkit.alive && this.alive) {
+  if (this.hasPayload && this.alive && !this.medkit.alive) {
     this.medkit.reset(this.x + 80, this.y + 85);
+    this.hasPayload = false;
   }
 };
