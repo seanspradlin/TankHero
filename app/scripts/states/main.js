@@ -9,6 +9,8 @@ Main.create = function() {
   // Properties
   this.nextSpawn = 0;
   this.spawnDelay = 1500;
+  this.supplyDrop = 25;
+  this.supplyDropDelay = 50;
   this.totalKills = 0;
 
   // Sounds
@@ -24,7 +26,7 @@ Main.create = function() {
     , boundsY       = 0
     , boundsWidth   = this.game.width * 2.0
     , boundsHeight  = this.game.height - 25;
-  this.world.bounds = new Phaser.Rectangle(boundsX, boundsY, boundsWidth, boundsHeight);
+  this.world.setBounds(boundsX, boundsY, boundsWidth, boundsHeight);
 
   // Enable physics
   this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -70,6 +72,9 @@ Main.create = function() {
   this.player = this.add.existing(new Player(this.game, 100, this.game.height - 25));
   this.player.scale.x = -2;
   this.player.scale.y = 2;
+
+  // Biplane
+  this.biplane = this.add.existing(new Biplane(this.game));
 
   // Counters
   var fontOptions = {
@@ -149,6 +154,10 @@ Main.update = function() {
     this.player.attack();
   }
 
+  // Supply Drops
+  this.spawnSupplyDrop();
+  this.biplane.drop();
+
   // Kill on collision
   this.physics.arcade.collide(this.ground, this.player.shells, this.groundCollider);
   this.physics.arcade.collide(this.ground, this.pool.bombs, this.groundCollider);
@@ -163,6 +172,13 @@ Main.update = function() {
   // Damage enemies
   this.physics.arcade.collide(this.pool.panthers, this.player.shells, this.objectCollider);
   this.physics.arcade.collide(this.pool.jeeps, this.player.shells, this.objectCollider);
+
+  // Supply Crate
+  this.physics.arcade.collide(this.player, this.biplane.medkit, function(p, m) {
+    m.kill();
+    p.health += 5;
+    p.health = p.health > p.maxHealth ? p.maxHealth : p.health;
+  });
 
   // Update existing enemies
   if (this.backgroundMusic.isPlaying) {
@@ -215,6 +231,14 @@ Main.objectCollider = function(object, ammo) {
     Main.totalKills += object.scoreValue || 1;
   }
   ammo.kill();
+};
+
+Main.spawnSupplyDrop = function() {
+  if (this.totalKills < this.supplyDrop) { return; }
+  this.biplane.reset(this.game.width * 1.5, 300);
+  this.biplane.forward();
+  this.supplyDrop += this.supplyDropDelay;
+  this.supplyDropDelay += 25;
 };
 
 Main.spawnEnemies = function() {

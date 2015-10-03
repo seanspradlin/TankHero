@@ -9,6 +9,7 @@ function Player(game, x, y) {
   this.nextFire = 0;
   this.moveSpeed = 300;
   this.shellSpeed = 600;
+  this.maxHealth = 20;
   this.health = 20;
 
   // Call base constructor
