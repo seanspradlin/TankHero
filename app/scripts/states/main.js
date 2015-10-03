@@ -77,8 +77,11 @@ Main.create = function() {
     strokeThickness: 3,
     align: 'center',
   };
-  this.healthCounter = this.add.text(50, 50, '', fontOptions);
+
   this.killCounter = this.add.text(50, 75, '', fontOptions);
+
+  // Healthbar
+  this.healthbar = this.add.existing(new Healthbar(this.game));
 
   // Instructions
   this.movementInstructions = this.add.text(512, 300,
@@ -116,7 +119,7 @@ Main.update = function() {
     }
   }
 
-  this.healthCounter.text = 'Health: ' + this.player.health;
+  this.healthbar.setHealth(this.player.health);
   this.killCounter.text = 'Score: ' + this.totalKills;
 
   this.fog1.x -= 0.5;
