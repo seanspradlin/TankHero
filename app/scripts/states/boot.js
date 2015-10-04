@@ -17,10 +17,6 @@ Boot.create = function() {
   this.stage.backgroundColor = '#aaaaaa';
   console.log('Configuring game');
 
-  var logo = Boot.add.image(Boot.game.width/2, Boot.game.height/2, 'fullscreen', '8bit');
-  logo.anchor.x = 0.5;
-  logo.anchor.y = 0.5;
-
   console.log('Boot complete, jump to Preload.');
   this.state.start('Preload');
 };

@@ -15,18 +15,6 @@ Menu.create = function () {
   this.keyboard = this.input.keyboard.createCursorKeys();
   this.keyboard.attack = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-  var fontOptions = {
-    font: '42px Arial',
-    fill: '#900',
-    fontWeight: 'bold',
-    stroke: '#ddd',
-    strokeThickness: 5,
-    align: 'center',
-  };
-  var text = this.add.text(this.game.width/2, this.game.height/2, 'Press Spacebar to Begin', fontOptions);
-  text.anchor.x = 0.5;
-  text.anchor.y = 0.5;
-
   console.log('Menu loaded');
 };
 
