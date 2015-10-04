@@ -2,7 +2,7 @@
 
 "8Bit":
 {
-	"frame": {"x":1028,"y":604,"w":627,"h":389},
+	"frame": {"x":2,"y":604,"w":627,"h":389},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":79,"y":25,"w":627,"h":389},
@@ -10,15 +10,15 @@
 },
 "game-over":
 {
-	"frame": {"x":2,"y":2,"w":1024,"h":768},
+	"frame": {"x":2,"y":2,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":768},
-	"sourceSize": {"w":1024,"h":768}
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
 },
 "game-start":
 {
-	"frame": {"x":1028,"y":2,"w":800,"h":600},
+	"frame": {"x":804,"y":2,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -29,8 +29,8 @@
 	"version": "1.0",
 	"image": "fullscreens.png",
 	"format": "RGBA8888",
-	"size": {"w":1830,"h":995},
+	"size": {"w":1606,"h":995},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:27af860e489315278ba09a0791c37e76:af345c3e53dcbddc2f22be9b1cb41f2c:99214f8a1a4c658a15515036f974bf48$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ae65fcb133dd66f00ec1246901583ef8:d29fd17f539215c0bae41f992efcfb71:99214f8a1a4c658a15515036f974bf48$"
 }
 }

@@ -370,11 +370,11 @@
 },
 "jeep/grenade":
 {
-	"frame": {"x":549,"y":317,"w":9,"h":3},
+	"frame": {"x":1197,"y":256,"w":12,"h":4},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":9,"h":3},
-	"sourceSize": {"w":9,"h":3}
+	"spriteSourceSize": {"x":0,"y":0,"w":12,"h":4},
+	"sourceSize": {"w":12,"h":4}
 },
 "jeep/grenadier":
 {
@@ -823,6 +823,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1758,"h":508},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c38bf14e6cba96fbae9b3bf78de550fa:465ab1495ec96c84016effc7f769adba:1eabdf11f75e3a4fe3147baf7b5be24b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0d083c9d44115268007eaad02fa8899d:d1e6acfc813df39a8a9e035e536b3cc0:1eabdf11f75e3a4fe3147baf7b5be24b$"
 }
 }
