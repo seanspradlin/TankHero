@@ -33,17 +33,9 @@ Main.create = function() {
   this.physics.arcade.gravity.y = 500.0;
 
   // Background
-  var sky = this.add.image(0, 0, 'environment', 'sky');
-  sky.width = this.game.width;
-  sky.height = this.game.height;
-  var trees1 = this.add.image(0,this.game.height - 10, 'environment', 'trees1');
-  trees1.width = this.game.width;
-  trees1.alpha = 0.3;
-  trees1.anchor.y = 1.0;
-  var trees2 = this.add.image(0,this.game.height - 20, 'environment', 'trees2');
-  trees2.width = this.game.width;
-  trees2.alpha = 0.2;
-  trees2.anchor.y = 1.0;
+  var background = this.add.image(0,0, 'environment', 'background');
+  background.width = this.game.width;
+  background.height = this.game.height;
 
   // Fog 1
   this.fog1 = this.add.tileSprite(0, this.game.height, 2400, 400, 'environment', 'dust1');

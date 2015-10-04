@@ -1,8 +1,16 @@
 {"frames": {
 
+"background":
+{
+	"frame": {"x":2,"y":2,"w":400,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":300},
+	"sourceSize": {"w":400,"h":300}
+},
 "dust1":
 {
-	"frame": {"x":661,"y":629,"w":453,"h":117},
+	"frame": {"x":404,"y":2,"w":453,"h":117},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":510,"y":267,"w":453,"h":117},
@@ -10,7 +18,7 @@
 },
 "dust2":
 {
-	"frame": {"x":2,"y":629,"w":657,"h":150},
+	"frame": {"x":2,"y":304,"w":657,"h":150},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":250,"w":657,"h":150},
@@ -18,43 +26,19 @@
 },
 "ground":
 {
-	"frame": {"x":2,"y":781,"w":955,"h":37},
+	"frame": {"x":404,"y":121,"w":400,"h":16},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":955,"h":37},
-	"sourceSize": {"w":955,"h":37}
-},
-"sky":
-{
-	"frame": {"x":2,"y":2,"w":1200,"h":400},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1200,"h":400},
-	"sourceSize": {"w":1200,"h":400}
-},
-"trees1":
-{
-	"frame": {"x":2,"y":536,"w":1200,"h":91},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":310,"w":1200,"h":91},
-	"sourceSize": {"w":1200,"h":401}
-},
-"trees2":
-{
-	"frame": {"x":2,"y":404,"w":1200,"h":130},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":271,"w":1200,"h":130},
-	"sourceSize": {"w":1200,"h":401}
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":16},
+	"sourceSize": {"w":400,"h":16}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "environment.png",
 	"format": "RGBA8888",
-	"size": {"w":1204,"h":820},
+	"size": {"w":859,"h":456},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:44fd8ff7fd23d33e27196c687dbda5d7:30e77c15959df9d76f62817c33f83abb:7abea815e3107eecbafa95ee71efdc50$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fd17d0f1e4f16a99c019fcbfce0d5edf:4fd5cceef456e53f131635a7584bb764:7abea815e3107eecbafa95ee71efdc50$"
 }
 }
