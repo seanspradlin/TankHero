@@ -3,6 +3,7 @@
 var gulp        = require('gulp')
   , sourcemaps  = require('gulp-sourcemaps')
   , concat      = require('gulp-concat')
+  , wrap        = require('gulp-wrap')
   , uglify      = require('gulp-uglify')
   , minifyHtml  = require('gulp-minify-html')
   , minifyCss   = require('gulp-minify-css')
@@ -15,6 +16,14 @@ gulp.task('js-crunch', function () {
     .pipe(concat('tankhero.min.js'))
     .pipe(uglify())
     .pipe(sourcemaps.write())
+    .pipe(gulp.dest(Config.build + 'scripts/'));
+});
+
+gulp.task('js-production', function() {
+  return gulp.src(Config.scripts)
+    .pipe(concat('tankhero.min.js'))
+    .pipe(uglify())
+    .pipe(wrap('(function(){<%= contents %>})();'))
     .pipe(gulp.dest(Config.build + 'scripts/'));
 });
 
@@ -32,6 +41,13 @@ gulp.task('css-crunch', function() {
     .pipe(concat('style.min.css'))
     .pipe(minifyCss())
     .pipe(sourcemaps.write())
+    .pipe(gulp.dest(Config.build));
+});
+
+gulp.task('css-production', function() {
+  return gulp.src(Config.source + 'style.css')
+    .pipe(concat('style.min.css'))
+    .pipe(minifyCss())
     .pipe(gulp.dest(Config.build));
 });
 
@@ -55,3 +71,4 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['js-crunch', 'html-crunch', 'css-crunch', 'phaser', 'assets']);
+gulp.task('production', ['js-production', 'html-crunch', 'css-production', 'phaser', 'assets']);
