@@ -9,7 +9,7 @@ End.init = function(totalKills) {
 End.create = function() {
   console.log('Game Over');
   this.stage.backgroundColor = '#333333';
-  this.restartTime = this.game.time.time + 15000;
+  this.restartTime = this.game.time.time + 5000;
   Scoreboard.isBest(this.finalScore);
 
   var logo = Boot.add.image(Boot.game.width/2, Boot.game.height/2, 'fullscreen', 'game-over');
